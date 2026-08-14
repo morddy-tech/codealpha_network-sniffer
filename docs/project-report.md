@@ -2,8 +2,8 @@
 
 **Internship:** CodeAlpha — Cybersecurity Internship
 **Task:** Task 1 — Basic Network Sniffer
-**Repository:** `CodeAlpha_BasicNetworkSniffer`
-**Author:** Eco Mike
+**Repository:** `codealpha_network-sniffer`
+**Author:** Ifedayo Matthew
 
 ---
 

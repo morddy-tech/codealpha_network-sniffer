@@ -13,8 +13,8 @@ This guide covers local installation and running on Windows, Linux and macOS.
 ## 1. Get the code
 
 ```bash
-git clone <repository-url>
-cd CodeAlpha_BasicNetworkSniffer
+git clone https://github.com/morddy-tech/codealpha_network-sniffer.git
+cd codealpha_network-sniffer
 ```
 
 ## 2. Create and activate a virtual environment

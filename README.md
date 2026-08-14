@@ -1,6 +1,6 @@
 <div align="center">
 
-# CodeAlpha Advanced Network Traffic Analyzer
+# CodeAlpha Network Traffic Analyzer
 
 ### CodeAlpha Internship · Task 1 — Basic Network Sniffer
 
@@ -85,7 +85,7 @@ database. See [`docs/architecture.md`](docs/architecture.md).
 ## Project Structure
 
 ```
-CodeAlpha_BasicNetworkSniffer/
+codealpha_network-sniffer/
 ├── manage.py
 ├── requirements.txt / requirements-dev.txt
 ├── .env.example / .gitignore / LICENSE
@@ -115,8 +115,8 @@ CodeAlpha_BasicNetworkSniffer/
 ### 2. Clone and prepare
 
 ```bash
-git clone <repository-url>
-cd CodeAlpha_BasicNetworkSniffer
+git clone https://github.com/morddy-tech/codealpha_network-sniffer.git
+cd codealpha_network-sniffer
 
 python -m venv .venv
 # Windows:  .venv\Scripts\activate
@@ -297,14 +297,14 @@ always runs directly on the host without Docker.
 
 ## CodeAlpha Submission
 
-- **Project:** CodeAlpha Advanced Network Traffic Analyzer
+- **Project:** CodeAlpha Network Traffic Analyzer
 - **Task:** Task 1 — Basic Network Sniffer
-- **Repo:** `CodeAlpha_BasicNetworkSniffer`
+- **Repo:** `codealpha_network-sniffer`
 - **Report:** [`docs/project-report.md`](docs/project-report.md)
 
 ## Author
 
-Eco Mike — CodeAlpha cybersecurity internship project.
+Ifedayo Matthew — CodeAlpha cybersecurity internship project.
 
 ## License
 
