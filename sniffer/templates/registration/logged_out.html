@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Sign out · Network Traffic Analyzer{% endblock %}
+{% block content %}
+<div class="login-wrap">
+  <div class="card login-card">
+    <div class="card-body center">
+      <h1>Signed out</h1>
+      <p class="muted">You have been logged out of the analyzer.</p>
+      <a class="btn primary" href="{% url 'login' %}">Sign back in</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

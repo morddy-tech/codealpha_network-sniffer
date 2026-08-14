@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Sign in · Network Traffic Analyzer{% endblock %}
+{% block content %}
+<div class="login-wrap">
+  <div class="card login-card">
+    <div class="brand">
+      <div class="logo">CA</div>
+      <div>
+        <h1>Advanced Network Traffic Analyzer</h1>
+        <small>CodeAlpha · Basic Network Sniffer</small>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="sub">Sign in to access the security dashboard.</div>
+      {% if form.errors %}
+        <div class="alert error">Invalid username or password.</div>
+      {% endif %}
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}">
+        <div class="field">
+          <label for="id_username">Username</label>
+          <input type="text" name="username" id="id_username" autocomplete="username" autofocus required>
+        </div>
+        <div class="field">
+          <label for="id_password">Password</label>
+          <input type="password" name="password" id="id_password" autocomplete="current-password" required>
+        </div>
+        <button class="btn primary" type="submit" style="width:100%;justify-content:center">Sign In</button>
+      </form>
+      <p class="small faint mt">Staff accounts can start/stop captures and manage settings.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

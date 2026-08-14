@@ -1,0 +1,136 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session Report #{{ session.id }} · {{ session.name }}</title>
+<style>
+  :root {
+    --bg:#0b1322; --panel:#101c31; --border:#223356; --text:#dbe6f5;
+    --dim:#8fa3c0; --accent:#38bdf8; --green:#34d399; --red:#f87171; --yellow:#fbbf24;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family:"Segoe UI",Arial,sans-serif; font-size:14px; }
+  .wrap { max-width:900px; margin:0 auto; padding:28px 20px 60px; }
+  h1 { font-size:22px; margin:0 0 4px; }
+  h2 { font-size:15px; text-transform:uppercase; letter-spacing:1px; color:var(--accent); border-bottom:1px solid var(--border); padding-bottom:6px; margin:30px 0 12px; }
+  .sub { color:var(--dim); margin-bottom:22px; }
+  table { width:100%; border-collapse:collapse; margin-bottom:8px; }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid rgba(34,51,86,.6); font-size:13px; }
+  th { color:var(--dim); font-size:11px; text-transform:uppercase; letter-spacing:.6px; }
+  td.num, th.num { text-align:right; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; }
+  .card { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:12px 14px; }
+  .card .k { font-size:10px; color:var(--dim); text-transform:uppercase; letter-spacing:.8px; }
+  .card .v { font-size:18px; font-weight:700; margin-top:4px; }
+  .mono { font-family:Consolas,monospace; font-size:12.5px; }
+  .anomaly { border-left:3px solid var(--yellow); background:var(--panel); padding:10px 14px; border-radius:0 8px 8px 0; margin-bottom:8px; }
+  .anomaly.high { border-color:var(--red); }
+  .anomaly.info { border-color:var(--accent); }
+  .note { color:var(--dim); font-size:12px; margin-top:24px; }
+  .pill { display:inline-block; padding:2px 10px; border-radius:999px; border:1px solid var(--border); font-size:11px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>CodeAlpha Advanced Network Traffic Analyzer</h1>
+  <div class="sub">Session Report — generated {{ generated_at }}</div>
+
+  <div class="cards">
+    <div class="card"><div class="k">Session</div><div class="v">{{ session.id }}</div></div>
+    <div class="card"><div class="k">Packets</div><div class="v">{{ statistics.packet_count }}</div></div>
+    <div class="card"><div class="k">Traffic</div><div class="v">{{ statistics.total_bytes }}</div></div>
+    <div class="card"><div class="k">Duration</div><div class="v">{{ session.duration_seconds }}s</div></div>
+  </div>
+
+  <h2>Session Details</h2>
+  <table>
+    <tr><th>Name</th><td>{{ session.name }}</td></tr>
+    <tr><th>Interface</th><td class="mono">{{ session.interface }}</td></tr>
+    <tr><th>Status</th><td>{{ session.status }}</td></tr>
+    <tr><th>Started</th><td>{{ session.started_at }}</td></tr>
+    <tr><th>Ended</th><td>{{ session.ended_at|default:"—" }}</td></tr>
+    <tr><th>Protocol filter</th><td>{{ session.protocol_filter|default:"none" }}</td></tr>
+    <tr><th>Payload previews</th><td>{% if session.payload_storage_enabled %}enabled{% else %}disabled{% endif %}</td></tr>
+  </table>
+
+  <h2>Traffic Statistics</h2>
+  <div class="cards">
+    <div class="card"><div class="k">TCP</div><div class="v">{{ statistics.tcp_count }}</div></div>
+    <div class="card"><div class="k">UDP</div><div class="v">{{ statistics.udp_count }}</div></div>
+    <div class="card"><div class="k">ICMP</div><div class="v">{{ statistics.icmp_count }}</div></div>
+    <div class="card"><div class="k">ARP</div><div class="v">{{ statistics.arp_count }}</div></div>
+    <div class="card"><div class="k">DNS</div><div class="v">{{ statistics.dns_count }}</div></div>
+    <div class="card"><div class="k">IPv4 / IPv6</div><div class="v">{{ statistics.ipv4_count }} / {{ statistics.ipv6_count }}</div></div>
+    <div class="card"><div class="k">Avg packet size</div><div class="v">{{ statistics.average_packet_size }}</div></div>
+  </div>
+
+  <h2>Protocol Distribution</h2>
+  <table>
+    <thead><tr><th>Protocol</th><th class="num">Packets</th></tr></thead>
+    <tbody>
+    {% for row in protocol_distribution %}
+      <tr><td>{{ row.protocol }}</td><td class="num">{{ row.count }}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+  <h2>Top Source IPs</h2>
+  <table>
+    <thead><tr><th>IP</th><th class="num">Packets</th></tr></thead>
+    <tbody>
+    {% for ip, total in statistics.top_sources %}
+      <tr><td class="mono">{{ ip }}</td><td class="num">{{ total }}</td></tr>
+    {% empty %}<tr><td colspan="2">No data.</td></tr>{% endfor %}
+    </tbody>
+  </table>
+
+  <h2>Top Destination IPs</h2>
+  <table>
+    <thead><tr><th>IP</th><th class="num">Packets</th></tr></thead>
+    <tbody>
+    {% for ip, total in statistics.top_destinations %}
+      <tr><td class="mono">{{ ip }}</td><td class="num">{{ total }}</td></tr>
+    {% empty %}<tr><td colspan="2">No data.</td></tr>{% endfor %}
+    </tbody>
+  </table>
+
+  <h2>Top Destination Ports</h2>
+  <table>
+    <thead><tr><th>Port</th><th class="num">Packets</th></tr></thead>
+    <tbody>
+    {% for port, total in statistics.top_destination_ports %}
+      <tr><td class="mono">{{ port }}</td><td class="num">{{ total }}</td></tr>
+    {% empty %}<tr><td colspan="2">No data.</td></tr>{% endfor %}
+    </tbody>
+  </table>
+
+  <h2>Top DNS Queries</h2>
+  <table>
+    <thead><tr><th>Query</th><th>Type</th><th class="num">Count</th></tr></thead>
+    <tbody>
+    {% for row in dns_top_queries %}
+      <tr><td class="mono">{{ row.query_name }}</td><td>{{ row.query_type }}</td><td class="num">{{ row.total }}</td></tr>
+    {% empty %}<tr><td colspan="3">No DNS queries recorded.</td></tr>{% endfor %}
+    </tbody>
+  </table>
+
+  <h2>Potential Anomaly Indicators</h2>
+  {% if statistics.anomalies %}
+    {% for a in statistics.anomalies %}
+      <div class="anomaly {{ a.severity }}">
+        <strong>[{{ a.severity|upper }}] {{ a.title }}</strong><br>
+        {{ a.description }}
+      </div>
+    {% endfor %}
+  {% else %}
+    <p class="muted">No passive heuristic indicators exceeded configured thresholds.</p>
+  {% endif %}
+
+  <p class="note">
+    Generated by the CodeAlpha Advanced Network Traffic Analyzer. Passive metadata only; payload
+    previews are excluded from reports. Only monitor networks you own or are authorized to monitor.
+  </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,368 @@
+2026-08-13 21:23:05,667 INFO django.utils.autoreload Watching for file changes with StatReloader
+2026-08-13 21:23:31,314 INFO django.server "GET / HTTP/1.1" 200 11599
+2026-08-13 21:23:31,430 INFO django.server "GET /static/sniffer/css/sniffer.css HTTP/1.1" 200 4754
+2026-08-13 21:23:31,434 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 200 70011
+2026-08-13 21:23:31,490 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 200 754
+2026-08-13 21:23:31,524 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 200 1051
+2026-08-13 21:23:33,761 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 200 754
+2026-08-13 21:23:33,763 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 200 1051
+2026-08-13 21:23:33,764 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 200 70011
+2026-08-13 21:23:56,307 INFO django.server "GET /dashboard/ HTTP/1.1" 302 0
+2026-08-13 21:23:56,431 INFO django.server "GET /accounts/login/?next=/dashboard/ HTTP/1.1" 200 6459
+2026-08-13 21:24:17,846 INFO django.server "POST /accounts/login/ HTTP/1.1" 302 0
+2026-08-13 21:24:18,334 INFO django.server "GET /dashboard/ HTTP/1.1" 200 11538
+2026-08-13 21:24:41,131 INFO django.server "GET /capture/ HTTP/1.1" 200 15104
+2026-08-13 21:24:41,256 INFO django.server "GET /static/sniffer/css/sniffer.css HTTP/1.1" 304 0
+2026-08-13 21:24:41,279 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-13 21:24:41,279 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-13 21:24:41,280 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-13 21:24:41,334 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 200 1518
+2026-08-13 21:24:41,709 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-13 21:24:41,733 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-13 21:24:41,734 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 200 1518
+2026-08-13 21:24:41,734 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-13 21:26:07,767 INFO django.server "GET /sessions/ HTTP/1.1" 200 7029
+2026-08-13 21:26:07,912 INFO django.server "GET /static/sniffer/css/sniffer.css HTTP/1.1" 304 0
+2026-08-13 21:26:07,935 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-13 21:26:07,936 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-13 21:26:08,010 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-13 21:26:09,073 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-13 21:26:09,165 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-13 21:26:09,200 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-13 21:26:11,292 INFO django.server "GET /packets/ HTTP/1.1" 200 8295
+2026-08-13 21:26:14,432 INFO django.server "GET /analytics/ HTTP/1.1" 200 8569
+2026-08-13 21:26:17,560 INFO django.server "GET /analytics/dns/ HTTP/1.1" 200 8158
+2026-08-13 21:26:19,464 INFO django.server "GET /interfaces/ HTTP/1.1" 200 49577
+2026-08-13 21:27:17,024 INFO capture.interfaces Interface refresh: 0 added, 57 updated
+2026-08-13 21:27:17,024 INFO sniffer.views Interface table refreshed by admin123
+2026-08-13 21:27:17,057 INFO django.server "GET /interfaces/?refresh=1 HTTP/1.1" 200 49693
+2026-08-13 21:27:17,206 INFO django.server "GET /static/sniffer/css/sniffer.css HTTP/1.1" 304 0
+2026-08-13 21:27:17,232 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-13 21:27:17,310 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-13 21:27:17,542 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-13 21:27:18,968 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-13 21:27:19,075 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-13 21:27:19,106 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-13 21:27:24,209 INFO capture.interfaces Interface refresh: 0 added, 57 updated
+2026-08-13 21:27:24,210 INFO sniffer.views Interface table refreshed by admin123
+2026-08-13 21:27:24,233 INFO django.server "GET /interfaces/?refresh=1 HTTP/1.1" 200 49693
+2026-08-13 21:27:32,097 INFO capture.interfaces Interface refresh: 0 added, 57 updated
+2026-08-13 21:27:32,102 INFO sniffer.views Interface table refreshed by admin123
+2026-08-13 21:27:32,123 INFO django.server "GET /interfaces/?refresh=1 HTTP/1.1" 200 49693
+2026-08-13 21:27:34,904 INFO capture.interfaces Interface refresh: 0 added, 57 updated
+2026-08-13 21:27:34,905 INFO sniffer.views Interface table refreshed by admin123
+2026-08-13 21:27:34,937 INFO django.server "GET /interfaces/?refresh=1 HTTP/1.1" 200 49693
+2026-08-13 21:27:53,342 INFO django.server "GET /settings/ HTTP/1.1" 200 7869
+2026-08-13 21:28:12,296 INFO django.server "GET /admin/ HTTP/1.1" 200 9858
+2026-08-13 21:28:12,464 INFO django.server "GET /static/admin/js/theme.js HTTP/1.1" 200 572
+2026-08-13 21:28:12,481 INFO django.server "GET /static/admin/css/dashboard.css HTTP/1.1" 200 265
+2026-08-13 21:28:12,602 INFO django.server "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 884
+2026-08-13 21:28:12,604 INFO django.server "GET /static/admin/css/base.css HTTP/1.1" 200 5362
+2026-08-13 21:28:12,613 INFO django.server "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 813
+2026-08-13 21:28:12,684 INFO django.server "GET /static/admin/css/responsive.css HTTP/1.1" 200 3121
+2026-08-13 21:28:12,712 INFO django.server "GET /static/admin/js/theme.js HTTP/1.1" 200 572
+2026-08-13 21:28:12,915 INFO django.server "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 350
+2026-08-13 21:28:12,946 INFO django.server "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 866
+2026-08-13 21:28:12,956 INFO django.server "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 567
+2026-08-13 21:28:13,064 WARNING django.request Not Found: /favicon.ico
+2026-08-13 21:28:13,066 WARNING django.server "GET /favicon.ico HTTP/1.1" 404 179
+2026-08-13 21:28:14,049 INFO django.server "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 866
+2026-08-13 21:28:27,690 INFO django.server "GET /capture/ HTTP/1.1" 200 15104
+2026-08-13 21:28:27,799 INFO django.server "GET /static/sniffer/css/sniffer.css HTTP/1.1" 304 0
+2026-08-13 21:28:27,806 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-13 21:28:27,806 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-13 21:28:27,810 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 304 0
+2026-08-13 21:28:27,811 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-13 21:28:27,856 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-13 21:28:27,862 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-13 21:28:27,869 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 304 0
+2026-08-13 21:28:27,880 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-13 21:28:59,065 INFO django.server "POST /accounts/logout/ HTTP/1.1" 302 0
+2026-08-13 21:28:59,111 INFO django.server "GET / HTTP/1.1" 200 11599
+2026-08-13 21:29:03,734 INFO django.server "GET /accounts/login/ HTTP/1.1" 200 6448
+2026-08-13 21:29:07,042 INFO django.server "GET /dashboard/ HTTP/1.1" 302 0
+2026-08-13 21:29:07,079 INFO django.server "GET /accounts/login/?next=/dashboard/ HTTP/1.1" 200 6459
+2026-08-13 21:29:08,158 INFO django.server "GET /capture/ HTTP/1.1" 302 0
+2026-08-13 21:29:08,224 INFO django.server "GET /accounts/login/?next=/capture/ HTTP/1.1" 200 6457
+2026-08-13 21:29:10,008 INFO django.server "GET /sessions/ HTTP/1.1" 302 0
+2026-08-13 21:29:10,038 INFO django.server "GET /accounts/login/?next=/sessions/ HTTP/1.1" 200 6458
+2026-08-13 21:29:11,391 INFO django.server "GET /packets/ HTTP/1.1" 302 0
+2026-08-13 21:29:11,419 INFO django.server "GET /accounts/login/?next=/packets/ HTTP/1.1" 200 6457
+2026-08-13 21:29:14,081 INFO django.server "POST /accounts/logout/ HTTP/1.1" 302 0
+2026-08-13 21:29:14,114 INFO django.server "GET / HTTP/1.1" 200 11599
+2026-08-13 21:29:20,796 INFO django.server "POST /accounts/logout/ HTTP/1.1" 302 0
+2026-08-13 21:29:20,825 INFO django.server "GET / HTTP/1.1" 200 11599
+2026-08-13 21:29:22,817 INFO django.server "GET /admin/ HTTP/1.1" 302 0
+2026-08-13 21:29:22,984 INFO django.server "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4307
+2026-08-13 21:29:23,157 INFO django.server "GET /static/admin/css/base.css HTTP/1.1" 304 0
+2026-08-13 21:29:23,181 INFO django.server "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+2026-08-13 21:29:23,188 INFO django.server "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+2026-08-13 21:29:23,198 INFO django.server "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+2026-08-13 21:29:23,200 INFO django.server "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+2026-08-13 21:29:23,219 INFO django.server "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+2026-08-13 21:29:23,230 INFO django.server "GET /static/admin/css/login.css HTTP/1.1" 200 416
+2026-08-13 21:29:23,359 INFO django.server "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+2026-08-13 21:29:23,440 INFO django.server "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+2026-08-13 21:29:39,906 INFO django.server "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+2026-08-13 21:29:39,941 INFO django.server "GET /admin/ HTTP/1.1" 200 9858
+2026-08-13 21:29:40,056 INFO django.server "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+2026-08-13 21:29:40,326 INFO django.server "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+2026-08-13 21:29:40,419 INFO django.server "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+2026-08-13 21:29:47,088 INFO django.server "GET /admin/login/?next=/admin/ HTTP/1.1" 302 0
+2026-08-13 21:29:47,125 INFO django.server "GET /admin/ HTTP/1.1" 200 9858
+2026-08-13 21:29:53,957 INFO django.server "GET /dashboard/ HTTP/1.1" 200 11538
+2026-08-13 21:29:54,088 INFO django.server "GET /static/sniffer/css/sniffer.css HTTP/1.1" 304 0
+2026-08-13 21:29:54,091 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-13 21:29:54,094 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-13 21:29:54,096 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-13 21:29:56,562 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-13 21:29:56,563 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-13 21:29:56,569 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-13 21:30:01,581 INFO django.server "GET /capture/ HTTP/1.1" 200 15104
+2026-08-13 21:30:01,684 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 304 0
+2026-08-13 21:30:02,428 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 304 0
+2026-08-13 21:31:30,172 WARNING django.request Forbidden: /capture/
+2026-08-13 21:31:32,811 WARNING django.request Conflict: /capture/start/
+2026-08-13 21:31:35,377 WARNING django.request Forbidden: /capture/start/
+2026-08-13 21:31:38,009 WARNING django.request Bad Request: /capture/start/
+2026-08-13 21:31:40,720 WARNING django.request Bad Request: /capture/stop/
+2026-08-13 21:31:40,724 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-13 21:31:41,081 INFO capture.service Capture worker exited for session 1
+2026-08-13 21:31:41,382 INFO capture.service Capture started: session=1 interface=test0 count=10 timeout=None
+2026-08-13 21:31:41,436 INFO capture.service Capture worker exited for session 1
+2026-08-13 21:31:41,506 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-13 21:31:41,515 INFO capture.service Capture worker exited for session 1
+2026-08-13 21:31:41,598 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-13 21:31:41,607 INFO capture.service Capture worker exited for session 1
+2026-08-13 21:31:41,675 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-13 21:31:41,686 INFO capture.service Capture worker exited for session 1
+2026-08-13 21:31:41,779 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-13 21:31:41,788 INFO capture.service Capture worker exited for session 1
+2026-08-13 21:31:41,859 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-13 21:31:41,866 INFO capture.service Capture worker exited for session 1
+2026-08-13 21:31:41,936 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-13 21:31:41,945 INFO capture.service Capture worker exited for session 1
+2026-08-13 21:31:42,042 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-13 21:31:42,043 INFO capture.service Stop requested for session 1
+2026-08-13 21:31:42,052 INFO capture.service Capture worker exited for session 1
+2026-08-13 21:31:42,140 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-13 21:31:42,142 ERROR capture.service Capture worker failed for session 1
+Traceback (most recent call last):
+  File "C:\Users\Eco Mike\Desktop\INTERNSHIP\Task 1\NETWORK SNIFFER\capture\capture_service.py", line 301, in _run
+    raise RuntimeError("Scapy is not installed; live capture is unavailable.")
+RuntimeError: Scapy is not installed; live capture is unavailable.
+2026-08-13 21:31:42,145 INFO capture.service Capture worker exited for session 1
+2026-08-13 21:32:28,642 INFO django.server "GET /accounts/login/ HTTP/1.1" 200 6448
+2026-08-13 21:32:30,675 INFO django.server "POST /accounts/login/ HTTP/1.1" 302 0
+2026-08-13 21:32:32,413 INFO django.server "GET /capture/ HTTP/1.1" 200 15101
+2026-08-13 21:32:32,440 INFO django.server "GET /capture/ HTTP/1.1" 200 15101
+2026-08-13 21:32:32,461 INFO django.server "GET /capture/status/ HTTP/1.1" 200 236
+2026-08-13 21:33:32,047 INFO django.server "GET /capture/ HTTP/1.1" 200 15104
+2026-08-13 21:33:32,178 INFO django.server "GET /static/sniffer/css/sniffer.css HTTP/1.1" 304 0
+2026-08-13 21:33:32,191 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-13 21:33:32,194 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-13 21:33:32,195 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 304 0
+2026-08-13 21:33:32,226 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-13 21:33:32,659 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-13 21:33:32,660 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-13 21:33:32,663 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 304 0
+2026-08-13 21:33:32,687 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-13 21:33:52,140 INFO django.server "GET /capture/ HTTP/1.1" 200 15104
+2026-08-13 21:35:58,155 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 200 4950
+2026-08-13 21:36:31,718 INFO django.utils.autoreload C:\Users\Eco Mike\Desktop\INTERNSHIP\Task 1\NETWORK SNIFFER\config\settings.py changed, reloading.
+2026-08-13 21:36:35,122 INFO django.utils.autoreload Watching for file changes with StatReloader
+2026-08-13 21:36:57,017 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 200 5156
+2026-08-13 21:49:03,707 INFO django.utils.autoreload Watching for file changes with StatReloader
+2026-08-13 21:49:31,093 INFO django.server "GET /capture/ HTTP/1.1" 200 9412
+2026-08-13 21:49:31,267 INFO django.server "GET /static/sniffer/css/sniffer.css HTTP/1.1" 200 4754
+2026-08-13 21:49:31,374 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 200 754
+2026-08-13 21:49:31,376 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 200 1051
+2026-08-13 21:49:31,473 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 200 754
+2026-08-13 21:49:31,474 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 200 1051
+2026-08-13 21:49:31,566 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 200 1647
+2026-08-13 21:49:31,650 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 200 70011
+2026-08-13 21:49:31,651 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 200 1647
+2026-08-13 21:49:31,833 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 200 70011
+2026-08-13 21:49:32,565 INFO django.server "GET /capture/status/ HTTP/1.1" 200 236
+2026-08-13 21:49:34,558 INFO django.server "GET /capture/status/ HTTP/1.1" 200 236
+2026-08-13 21:49:36,553 INFO django.server "GET /capture/status/ HTTP/1.1" 200 236
+2026-08-13 21:49:38,557 INFO django.server "GET /capture/status/ HTTP/1.1" 200 236
+2026-08-13 21:49:40,559 INFO django.server "GET /capture/status/ HTTP/1.1" 200 236
+2026-08-13 21:49:42,574 INFO django.server "GET /capture/status/ HTTP/1.1" 200 236
+2026-08-13 21:49:44,562 INFO django.server "GET /capture/status/ HTTP/1.1" 200 236
+2026-08-13 21:49:46,553 INFO django.server "GET /capture/status/ HTTP/1.1" 200 236
+2026-08-13 21:49:48,566 INFO django.server "GET /capture/status/ HTTP/1.1" 200 236
+2026-08-13 21:49:50,555 INFO django.server "GET /capture/status/ HTTP/1.1" 200 236
+2026-08-13 21:49:52,693 INFO capture.service Capture started: session=5 interface=Loopback Pseudo-Interface 1 count=0 timeout=None
+2026-08-13 21:49:52,695 INFO sniffer.services Web capture started: session=5 by request
+2026-08-13 21:49:52,696 INFO sniffer.views Capture started by admin123 (session 5)
+2026-08-13 21:49:52,699 INFO django.server "POST /capture/start/ HTTP/1.1" 200 52
+2026-08-13 21:49:52,722 INFO django.server "GET /capture/status/ HTTP/1.1" 200 407
+2026-08-13 21:49:52,740 INFO django.server "GET /capture/status/ HTTP/1.1" 200 407
+2026-08-13 21:49:54,565 INFO django.server "GET /capture/status/ HTTP/1.1" 200 407
+2026-08-13 21:49:56,560 INFO django.server "GET /capture/status/ HTTP/1.1" 200 410
+2026-08-13 21:49:58,561 INFO django.server "GET /capture/status/ HTTP/1.1" 200 410
+2026-08-13 21:50:00,571 INFO django.server "GET /capture/status/ HTTP/1.1" 200 410
+2026-08-13 21:50:02,561 INFO django.server "GET /capture/status/ HTTP/1.1" 200 410
+2026-08-13 21:50:04,720 INFO django.server "GET /capture/status/ HTTP/1.1" 200 410
+2026-08-13 21:50:06,567 INFO django.server "GET /capture/status/ HTTP/1.1" 200 410
+2026-08-13 21:50:08,564 INFO django.server "GET /capture/status/ HTTP/1.1" 200 411
+2026-08-13 21:50:10,568 INFO django.server "GET /capture/status/ HTTP/1.1" 200 411
+2026-08-13 21:50:12,568 INFO django.server "GET /capture/status/ HTTP/1.1" 200 411
+2026-08-13 21:50:13,758 INFO capture.service Stop requested for session 5
+2026-08-13 21:50:13,954 INFO sniffer.views Capture stop requested by admin123 (session 5)
+2026-08-13 21:50:13,957 INFO django.server "POST /capture/stop/ HTTP/1.1" 200 34
+2026-08-13 21:50:14,561 INFO django.server "GET /capture/status/ HTTP/1.1" 200 412
+2026-08-13 21:50:15,500 INFO django.server "GET /capture/status/ HTTP/1.1" 200 412
+2026-08-13 21:50:16,577 INFO django.server "GET /capture/status/ HTTP/1.1" 200 413
+2026-08-13 21:50:18,567 INFO django.server "GET /capture/status/ HTTP/1.1" 200 413
+2026-08-13 21:50:20,556 INFO django.server "GET /capture/status/ HTTP/1.1" 200 413
+2026-08-13 21:50:22,734 INFO django.server "GET /capture/status/ HTTP/1.1" 200 413
+2026-08-13 21:50:24,556 INFO django.server "GET /capture/status/ HTTP/1.1" 200 413
+2026-08-13 21:50:26,570 INFO django.server "GET /capture/status/ HTTP/1.1" 200 413
+2026-08-13 21:50:28,570 INFO django.server "GET /capture/status/ HTTP/1.1" 200 413
+2026-08-13 21:50:30,566 INFO django.server "GET /capture/status/ HTTP/1.1" 200 413
+2026-08-13 21:50:32,559 INFO django.server "GET /capture/status/ HTTP/1.1" 200 413
+2026-08-13 21:50:34,567 INFO django.server "GET /capture/status/ HTTP/1.1" 200 413
+2026-08-13 21:50:36,590 INFO django.server "GET /capture/status/ HTTP/1.1" 200 413
+2026-08-13 21:50:36,593 INFO django.server "GET /sessions/ HTTP/1.1" 200 7959
+2026-08-13 21:50:36,732 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-13 21:50:36,735 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-13 21:50:36,736 INFO django.server "GET /static/sniffer/css/sniffer.css HTTP/1.1" 304 0
+2026-08-13 21:50:36,736 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-13 21:50:37,254 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-13 21:50:37,259 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-13 21:50:37,308 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-13 21:50:47,149 INFO django.server "GET /sessions/5/ HTTP/1.1" 200 13592
+2026-08-13 21:51:12,739 INFO django.server "GET /sessions/5/ HTTP/1.1" 200 13592
+2026-08-13 21:52:12,173 INFO django.server "GET /capture/ HTTP/1.1" 200 9542
+2026-08-13 21:52:12,327 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-13 21:52:12,332 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-13 21:52:12,338 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-13 21:52:12,595 INFO django.server "GET /static/sniffer/css/sniffer.css HTTP/1.1" 304 0
+2026-08-13 21:52:12,792 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 304 0
+2026-08-13 21:52:13,038 INFO django.server "GET /capture/status/ HTTP/1.1" 200 413
+2026-08-13 21:52:14,247 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-13 21:52:14,253 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-13 21:52:14,253 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-13 21:52:14,253 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 304 0
+2026-08-13 21:52:14,835 INFO django.server "GET /capture/status/ HTTP/1.1" 200 413
+2026-08-13 21:52:16,822 INFO django.server "GET /capture/status/ HTTP/1.1" 200 413
+2026-08-13 21:52:18,880 INFO django.server "GET /capture/status/ HTTP/1.1" 200 413
+2026-08-13 21:52:20,822 INFO django.server "GET /capture/status/ HTTP/1.1" 200 413
+2026-08-13 21:52:22,827 INFO django.server "GET /capture/status/ HTTP/1.1" 200 413
+2026-08-13 21:52:23,683 INFO django.server "GET /packets/ HTTP/1.1" 200 8450
+2026-08-13 21:52:30,887 INFO django.server "GET /analytics/ HTTP/1.1" 200 8655
+2026-08-13 21:52:35,827 INFO django.server "GET /analytics/dns/ HTTP/1.1" 200 8244
+2026-08-13 21:52:40,486 INFO django.server "GET /interfaces/ HTTP/1.1" 200 49663
+2026-08-13 21:54:04,890 INFO django.server "GET /capture/ HTTP/1.1" 200 9542
+2026-08-13 21:54:05,040 INFO django.server "GET /static/sniffer/css/sniffer.css HTTP/1.1" 304 0
+2026-08-13 21:54:05,047 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-13 21:54:05,057 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-13 21:54:05,064 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 304 0
+2026-08-13 21:54:05,075 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-13 21:54:06,075 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-13 21:54:07,246 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-13 21:54:08,763 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-13 21:54:08,764 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-13 21:54:08,765 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 304 0
+2026-08-13 21:54:08,772 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-13 21:54:09,244 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-13 21:54:11,271 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-13 21:54:13,495 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-13 21:54:15,257 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-13 21:54:17,246 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-13 21:54:17,813 INFO django.utils.autoreload C:\Users\Eco Mike\Desktop\INTERNSHIP\Task 1\NETWORK SNIFFER\capture\capture_service.py changed, reloading.
+2026-08-13 21:54:48,257 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-13 21:54:52,371 INFO capture.service Capture worker exited for session 1
+2026-08-13 21:54:52,499 INFO capture.service Capture started: session=1 interface=test0 count=10 timeout=None
+2026-08-13 21:56:03,431 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-13 21:56:07,575 INFO capture.service Capture worker exited for session 1
+2026-08-13 21:56:07,715 INFO capture.service Capture started: session=1 interface=test0 count=10 timeout=None
+2026-08-13 21:57:31,416 INFO capture.service Capture started: session=1 interface=test0 count=10 timeout=None
+2026-08-13 21:58:12,859 INFO capture.service Capture started: session=6 interface=test0 count=10 timeout=None
+2026-08-13 21:58:45,294 INFO capture.service Capture started: session=7 interface=test0 count=10 timeout=None
+2026-08-13 22:00:11,081 INFO capture.service Capture started: session=8 interface=test0 count=10 timeout=None
+2026-08-13 22:00:11,953 INFO capture.service Capture worker exited for session 8
+2026-08-13 22:00:31,156 WARNING django.request Not Found: /api/packets/99999/
+2026-08-13 22:00:42,726 WARNING django.request Unauthorized: /api/sessions/
+2026-08-13 22:00:42,727 WARNING django.request Unauthorized: /api/packets/
+2026-08-13 22:00:42,728 WARNING django.request Unauthorized: /api/statistics/
+2026-08-13 22:00:42,729 WARNING django.request Unauthorized: /api/dns/
+2026-08-13 22:00:42,729 WARNING django.request Unauthorized: /api/interfaces/
+2026-08-13 22:00:55,275 WARNING django.request Not Found: /reports/session/99999/html/
+2026-08-13 22:00:55,279 WARNING django.request Not Found: /reports/session/99999/csv/
+2026-08-13 22:00:55,284 WARNING django.request Not Found: /reports/session/99999/json/
+2026-08-13 22:01:08,755 WARNING django.request Forbidden: /capture/
+2026-08-13 22:01:11,150 WARNING django.request Conflict: /capture/start/
+2026-08-13 22:01:13,539 WARNING django.request Forbidden: /capture/start/
+2026-08-13 22:01:15,908 WARNING django.request Bad Request: /capture/start/
+2026-08-13 22:01:18,254 WARNING django.request Bad Request: /capture/stop/
+2026-08-13 22:01:39,026 WARNING core Rate limit exceeded for rate:12ca17b49af22894:/accounts/login/ (limit 10)
+2026-08-13 22:01:39,027 WARNING django.request Forbidden: /accounts/login/
+2026-08-13 22:01:39,029 WARNING core Rate limit exceeded for rate:12ca17b49af22894:/accounts/login/ (limit 10)
+2026-08-13 22:01:39,029 WARNING django.request Forbidden: /accounts/login/
+2026-08-13 22:01:55,864 WARNING django.request Not Found: /packets/99999/
+2026-08-13 22:02:14,485 WARNING django.request Forbidden: /sessions/1/delete/
+2026-08-13 22:02:17,342 WARNING sniffer.services Session 1 deleted by administrator (1 packets).
+2026-08-13 22:02:17,344 INFO sniffer.views Session 1 deleted by admin
+2026-08-13 22:02:20,238 WARNING django.request Not Found: /sessions/99999/
+2026-08-13 22:02:31,526 INFO sniffer.services Application settings updated by administrator.
+2026-08-13 22:02:36,871 WARNING django.request Forbidden: /settings/
+2026-08-13 22:02:36,878 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-13 22:02:36,888 INFO capture.service Capture worker exited for session 1
+2026-08-13 22:02:37,011 INFO capture.service Capture started: session=1 interface=test0 count=10 timeout=None
+2026-08-13 22:02:37,030 INFO capture.service Capture worker exited for session 1
+2026-08-13 22:02:37,093 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-13 22:02:37,099 INFO capture.service Capture worker exited for session 1
+2026-08-13 22:02:37,178 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-13 22:02:37,185 INFO capture.service Capture worker exited for session 1
+2026-08-13 22:02:37,257 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-13 22:02:37,262 INFO capture.service Capture worker exited for session 1
+2026-08-13 22:02:37,364 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-13 22:02:37,370 INFO capture.service Capture worker exited for session 1
+2026-08-13 22:02:37,440 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-13 22:02:37,447 INFO capture.service Capture worker exited for session 1
+2026-08-13 22:02:37,516 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-13 22:02:37,522 INFO capture.service Capture worker exited for session 1
+2026-08-13 22:02:37,620 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-13 22:02:37,622 INFO capture.service Stop requested for session 1
+2026-08-13 22:02:37,628 INFO capture.service Capture worker exited for session 1
+2026-08-13 22:02:37,729 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-13 22:02:38,042 INFO capture.service Stop requested for session 1
+2026-08-13 22:02:38,115 INFO capture.service Capture worker exited for session 1
+2026-08-13 22:02:38,266 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-13 22:02:38,275 ERROR capture.service Capture worker failed for session 1
+Traceback (most recent call last):
+  File "C:\Users\Eco Mike\Desktop\INTERNSHIP\Task 1\NETWORK SNIFFER\capture\capture_service.py", line 308, in _run
+    raise RuntimeError("Scapy is not installed; live capture is unavailable.")
+RuntimeError: Scapy is not installed; live capture is unavailable.
+2026-08-13 22:02:38,279 INFO capture.service Capture worker exited for session 1
+2026-08-13 22:54:00,918 INFO django.utils.autoreload Watching for file changes with StatReloader
+2026-08-13 22:54:12,894 INFO django.server "GET /capture/ HTTP/1.1" 200 9542
+2026-08-13 22:54:16,241 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-13 22:54:17,010 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-13 22:54:17,012 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-13 22:54:17,013 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-13 22:54:17,014 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 304 0
+2026-08-13 22:54:18,230 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-13 22:54:20,213 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-13 22:54:21,240 INFO django.server "GET /capture/ HTTP/1.1" 200 9542
+2026-08-13 22:54:21,421 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 200 1647
+2026-08-13 22:54:21,441 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 200 70011
+2026-08-13 22:54:21,442 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 200 1051
+2026-08-13 22:54:21,445 INFO django.server "GET /static/sniffer/css/sniffer.css HTTP/1.1" 200 4754
+2026-08-13 22:54:21,446 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 200 754
+2026-08-13 22:54:21,565 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-13 22:54:23,563 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-13 22:54:25,602 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-13 22:54:25,824 INFO django.server "POST /accounts/logout/ HTTP/1.1" 302 0
+2026-08-13 22:54:25,853 INFO django.server "GET / HTTP/1.1" 200 11685
+2026-08-13 22:54:34,823 INFO django.server "GET / HTTP/1.1" 200 11685
+2026-08-13 22:54:52,214 INFO django.server "GET / HTTP/1.1" 200 11685
+2026-08-13 22:54:52,480 INFO django.server "GET /static/sniffer/css/sniffer.css HTTP/1.1" 200 4754
+2026-08-13 22:54:52,568 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 200 754
+2026-08-13 22:54:52,655 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 200 70011
+2026-08-13 22:54:52,696 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 200 1051
+2026-08-13 22:54:58,667 INFO django.server "POST /accounts/logout/ HTTP/1.1" 302 0
+2026-08-13 22:54:58,777 INFO django.server "GET / HTTP/1.1" 200 11685

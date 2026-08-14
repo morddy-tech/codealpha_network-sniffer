@@ -1,0 +1,123 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CodeAlpha Advanced Network Traffic Analyzer - passive network monitoring platform.">
+  <title>{% block title %}Network Traffic Analyzer{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'sniffer/css/sniffer.css' %}">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="logo">CA</div>
+      <div>
+        <h1>Traffic Analyzer</h1>
+        <small>CodeAlpha · Network Sniffer</small>
+      </div>
+    </div>
+
+    <div class="nav-section">Monitoring</div>
+    <nav class="nav">
+      <a href="{% url 'dashboard' %}" class="{% if active == 'dashboard' %}active{% endif %}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+        Dashboard
+      </a>
+      <a href="{% url 'capture' %}" class="{% if active == 'capture' %}active{% endif %}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
+        Live Capture
+      </a>
+      <a href="{% url 'session_list' %}" class="{% if active == 'sessions' %}active{% endif %}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+        Capture Sessions
+      </a>
+      <a href="{% url 'packet_list' %}" class="{% if active == 'packets' %}active{% endif %}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/><circle cx="17" cy="7" r="1.6"/><circle cx="8" cy="12" r="1.6"/><circle cx="15" cy="17" r="1.6"/></svg>
+        Packet Explorer
+      </a>
+    </nav>
+
+    <div class="nav-section">Analysis</div>
+    <nav class="nav">
+      <a href="{% url 'analytics' %}" class="{% if active == 'analytics' %}active{% endif %}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+        Traffic Analytics
+      </a>
+      <a href="{% url 'dns_analysis' %}" class="{% if active == 'dns' %}active{% endif %}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.4 3.8 5.6 3.8 9s-1.3 6.6-3.8 9c-2.5-2.4-3.8-5.6-3.8-9S9.5 5.4 12 3z"/></svg>
+        DNS Analysis
+      </a>
+      <a href="{% url 'interfaces' %}" class="{% if active == 'interfaces' %}active{% endif %}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l6-4 6 4 6-4v12l-6 4-6-4-6 4z"/></svg>
+        Interfaces
+      </a>
+    </nav>
+
+    <div class="nav-section">Administration</div>
+    <nav class="nav">
+      <a href="{% url 'settings' %}" class="{% if active == 'settings' %}active{% endif %}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.2a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.2a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3h0a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.2a1.7 1.7 0 0 0 1 1.5h0a1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9v0a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.2a1.7 1.7 0 0 0-1.5 1z"/></svg>
+        Settings
+      </a>
+      <a href="/admin/">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        Django Admin
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      Only monitor networks you own or have explicit authorization to monitor.
+    </div>
+  </aside>
+
+  <div class="overlay" id="sidebar-overlay"></div>
+
+  <div class="main">
+    <header class="topbar">
+      <button class="burger" id="sidebar-toggle" aria-label="Menu">☰</button>
+      <div class="page-title">{% block page_title %}Network Traffic Analyzer{% endblock %}</div>
+
+      {% if global_running_session %}
+        <span class="status-pill running" title="Capture session #{{ global_running_session.id }} on {{ global_running_session.interface }}">
+          <span class="dot"></span>CAPTURING
+        </span>
+      {% else %}
+        <span class="status-pill idle"><span class="dot"></span>IDLE</span>
+      {% endif %}
+
+      <div class="user">
+        <div class="avatar">{{ request.user.username|first|upper }}</div>
+        <span class="muted">{{ request.user.username }}</span>
+        <form method="post" action="{% url 'logout' %}" style="display:inline">
+          {% csrf_token %}
+          <button type="submit" class="btn sm">Logout</button>
+        </form>
+      </div>
+    </header>
+
+    <main class="content">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+      CodeAlpha Advanced Network Traffic Analyzer · Passive monitoring only ·
+      <span class="faint">Use only on networks you own or are authorized to monitor.</span>
+    </footer>
+  </div>
+</div>
+
+<script src="{% static 'sniffer/vendor/chart.umd.min.js' %}"></script>
+<script src="{% static 'sniffer/js/main.js' %}"></script>
+<script src="{% static 'sniffer/js/charts.js' %}"></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

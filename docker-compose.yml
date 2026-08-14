@@ -1,0 +1,38 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      # Secrets must come from .env - never commit real values here.
+      SECRET_KEY: ${SECRET_KEY:?set SECRET_KEY in .env}
+      DEBUG: ${DEBUG:-False}
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS:-localhost,127.0.0.1}
+      DATABASE_URL: ${DATABASE_URL:-sqlite:////app/data/db.sqlite3}
+      LOG_DIR: /app/logs
+    volumes:
+      - sqlite_data:/app/data
+    restart: unless-stopped
+
+  # --------------------------------------------------------------------------
+  # Live packet capture from a container is OS-dependent and requires:
+  #   - host networking (network_mode: host) - ports above are then unused
+  #   - raw-socket privileges (cap_add: [NET_RAW, NET_ADMIN]) or Npcap
+  #     inside the container on Windows hosts
+  # The recommended deployment runs the web app in Docker and the capture
+  # worker on the host:
+  #   python capture_worker.py --interface "Wi-Fi" --count 500
+  # --------------------------------------------------------------------------
+  # capture:
+  #   build: .
+  #   network_mode: host
+  #   cap_add:
+  #     - NET_RAW
+  #     - NET_ADMIN
+  #   command: ["python", "manage.py", "capture", "--interface", "eth0", "--count", "0"]
+  #   env_file: [".env"]
+
+volumes:
+  sqlite_data:

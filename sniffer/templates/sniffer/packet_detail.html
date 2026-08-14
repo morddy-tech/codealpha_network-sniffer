@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% block title %}Packet #{{ packet.id }} · Detail{% endblock %}
+{% block page_title %}Packet #{{ packet.id }}{% endblock %}
+{% block content %}
+
+<div class="page-head">
+  <div class="flex">
+    <span class="badge {{ packet.protocol }}">{{ packet.protocol }}</span>
+    <span class="muted">session</span>
+    <a href="{% url 'session_detail' packet.session_id %}">#{{ packet.session_id }} · {{ packet.session.session_name }}</a>
+    <span class="muted">·</span>
+    <span class="mono">{{ packet.timestamp|date:"Y-m-d H:i:s" }}</span>
+  </div>
+  <a class="btn" href="{% url 'packet_list' %}">← Back to Explorer</a>
+</div>
+
+<div class="grid cols-2 mb">
+  <div class="card">
+    <div class="card-head"><h3>Packet Metadata</h3></div>
+    <div class="card-body">
+      <div class="meta-grid">
+        <div class="item"><div class="k">Timestamp</div><div class="v">{{ packet.timestamp|date:"Y-m-d H:i:s.u" }}</div></div>
+        <div class="item"><div class="k">Length</div><div class="v">{{ packet.packet_length }} bytes</div></div>
+        <div class="item"><div class="k">Source</div><div class="v mono">{{ packet.source_ip|default:"—" }}</div></div>
+        <div class="item"><div class="k">Destination</div><div class="v mono">{{ packet.destination_ip|default:"—" }}</div></div>
+        <div class="item"><div class="k">Source Port</div><div class="v mono">{{ packet.source_port|default:"—" }}</div></div>
+        <div class="item"><div class="k">Destination Port</div><div class="v mono">{{ packet.destination_port|default:"—" }}</div></div>
+        <div class="item"><div class="k">TTL</div><div class="v">{{ packet.ttl|default:"—" }}</div></div>
+        <div class="item"><div class="k">Version</div><div class="v">{% if packet.is_ipv4 %}IPv4{% elif packet.is_ipv6 %}IPv6{% else %}—{% endif %}</div></div>
+        <div class="item"><div class="k">Payload length</div><div class="v">{{ packet.payload_length|default:"—" }}</div></div>
+        <div class="item"><div class="k">Payload stored</div><div class="v">{% if packet.has_payload %}yes ({{ payload_hex_chunks|length }} line(s)){% else %}no{% endif %}</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h3>Protocol Stack</h3></div>
+    <div class="card-body">
+      <div class="pills">
+        {% if packet.is_ipv4 %}<span class="badge IP">IPv4</span>{% endif %}
+        {% if packet.is_ipv6 %}<span class="badge IPv6">IPv6</span>{% endif %}
+        {% if packet.protocol == "ARP" %}<span class="badge ARP">ARP</span>{% endif %}
+        {% if packet.protocol == "ICMP" %}<span class="badge ICMP">ICMP</span>{% endif %}
+        {% if packet.protocol == "ICMPv6" %}<span class="badge ICMPv6">ICMPv6</span>{% endif %}
+        {% if packet.transport_protocol == "TCP" %}<span class="badge TCP">TCP</span>{% endif %}
+        {% if packet.transport_protocol == "UDP" %}<span class="badge UDP">UDP</span>{% endif %}
+        {% if packet.protocol == "DNS" or packet.dns_queries.all %}<span class="badge DNS">DNS</span>{% endif %}
+      </div>
+
+      {% if packet.transport_protocol == "TCP" %}
+        <h4 class="mt" style="font-size:13px;color:var(--text-dim)">TCP Information</h4>
+        <div class="meta-grid">
+          <div class="item"><div class="k">Flags</div><div class="v mono">{{ packet.tcp_flags|default:"none" }}</div></div>
+          <div class="item"><div class="k">Source Port</div><div class="v">{{ packet.source_port }}</div></div>
+          <div class="item"><div class="k">Destination Port</div><div class="v">{{ packet.destination_port }}</div></div>
+        </div>
+      {% elif packet.transport_protocol == "UDP" %}
+        <h4 class="mt" style="font-size:13px;color:var(--text-dim)">UDP Information</h4>
+        <div class="meta-grid">
+          <div class="item"><div class="k">Source Port</div><div class="v">{{ packet.source_port }}</div></div>
+          <div class="item"><div class="k">Destination Port</div><div class="v">{{ packet.destination_port }}</div></div>
+        </div>
+      {% elif packet.protocol == "ICMP" or packet.protocol == "ICMPv6" %}
+        <h4 class="mt" style="font-size:13px;color:var(--text-dim)">ICMP Information</h4>
+        <div class="meta-grid">
+          <div class="item"><div class="k">Type</div><div class="v">{{ packet.icmp_type|default:"—" }}</div></div>
+          <div class="item"><div class="k">Code</div><div class="v">{{ packet.icmp_code|default:"—" }}</div></div>
+        </div>
+      {% endif %}
+
+      {% if dns_queries %}
+        <h4 class="mt" style="font-size:13px;color:var(--text-dim)">DNS Information</h4>
+        <div class="table-wrap">
+          <table class="data">
+            <thead><tr><th>Query Name</th><th>Type</th><th>Response Code</th></tr></thead>
+            <tbody>
+            {% for q in dns_queries %}
+              <tr><td class="mono">{{ q.query_name }}</td><td>{{ q.query_type }}</td><td class="mono">{{ q.response_code|default:"—" }}</td></tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head">
+    <h3>Payload Preview</h3>
+    <span class="hint">Limited diagnostic preview only — never a full payload dump.</span>
+  </div>
+  <div class="card-body">
+    {% if payload_hex_chunks %}
+      <div class="payload-box">
+        <div class="hex-row">
+          {% for row in payload_hex_chunks %}<span>{{ row }}</span><br>{% endfor %}
+        </div>
+        {% if payload_preview %}
+          <hr style="border-color:var(--border)">
+          <div class="ascii-row">ASCII: {{ payload_preview }}</div>
+        {% endif %}
+      </div>
+      <div class="small faint mt">Up to {{ max_payload_bytes }} bytes stored (configurable). Payload storage is disabled by default.</div>
+    {% else %}
+      <div class="empty">
+        <div class="icon">🔒</div>
+        <div class="title">No payload preview stored</div>
+        <div class="sub">
+          {% if packet.session.payload_storage_enabled %}
+            This packet carried no application payload.
+          {% else %}
+            Payload storage was disabled for session #{{ packet.session_id }}. Enable it in Settings before starting a new capture.
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

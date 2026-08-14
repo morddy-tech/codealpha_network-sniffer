@@ -1,0 +1,244 @@
+{% extends "base.html" %}
+{% block title %}{{ session.session_name }} · Session Detail{% endblock %}
+{% block page_title %}Session #{{ session.id }} · {{ session.session_name }}{% endblock %}
+{% block content %}
+
+<div class="page-head">
+  <div class="flex">
+    <span class="status-pill {{ session.status }}">{{ session.get_status_display|upper }}</span>
+    <span class="muted">interface</span> <span class="mono">{{ session.interface }}</span>
+    {% if session.protocol_filter %}<span class="pill">filter: {{ session.protocol_filter }}</span>{% endif %}
+    {% if session.payload_storage_enabled %}<span class="pill">payload previews enabled</span>{% endif %}
+  </div>
+  <div class="actions">
+    <a class="btn" href="{% url 'report_html' session.id %}">HTML report</a>
+    <a class="btn" href="{% url 'report_csv' session.id %}">CSV</a>
+    <a class="btn" href="{% url 'report_json' session.id %}">JSON</a>
+    {% if user.is_staff %}
+    <form method="post" action="{% url 'session_delete' session.id %}" data-confirm="Delete this session and all of its {{ session.packet_count }} packets? This cannot be undone.">
+      {% csrf_token %}
+      <button type="submit" class="btn danger">Delete Session</button>
+    </form>
+    {% endif %}
+  </div>
+</div>
+
+<div class="kpi-row">
+  <div class="stat-card accent"><div class="label">Duration</div><div class="value">{{ duration }}</div><div class="sub">started {{ session.started_at|date:"Y-m-d H:i:s" }}</div></div>
+  <div class="stat-card green"><div class="label">Packets</div><div class="value">{{ stats.packet_count }}</div><div class="sub">sanitized records</div></div>
+  <div class="stat-card yellow"><div class="label">Traffic</div><div class="value">{{ bytes }}</div><div class="sub">{{ stats.average_packet_size }} bytes/packet avg</div></div>
+  <div class="stat-card purple"><div class="label">DNS Queries</div><div class="value">{{ stats.dns_count }}</div><div class="sub">{{ session.ended_at|date:"Y-m-d H:i:s"|default:"still running" }}</div></div>
+</div>
+
+<div class="grid cols-4 mb">
+  <div class="stat-card"><div class="label">TCP</div><div class="value" style="color:var(--accent-2)">{{ stats.tcp_count }}</div><div class="sub">packets</div></div>
+  <div class="stat-card"><div class="label">UDP</div><div class="value" style="color:var(--purple)">{{ stats.udp_count }}</div><div class="sub">packets</div></div>
+  <div class="stat-card"><div class="label">ICMP</div><div class="value" style="color:var(--red)">{{ stats.icmp_count }}</div><div class="sub">packets</div></div>
+  <div class="stat-card"><div class="label">ARP</div><div class="value" style="color:var(--yellow)">{{ stats.arp_count }}</div><div class="sub">packets</div></div>
+</div>
+
+{% if session.error_message %}
+  <div class="alert error mb">Capture error: {{ session.error_message }}</div>
+{% endif %}
+
+<div class="tabs">
+  <button class="active" data-tab="overview">Overview</button>
+  <button data-tab="protocols">Protocols</button>
+  <button data-tab="timeline">Timeline</button>
+  <button data-tab="dns">DNS Activity</button>
+  <button data-tab="ips">Top IPs</button>
+  <button data-tab="ports">Top Ports</button>
+  <button data-tab="packets">Packets</button>
+  <button data-tab="anomalies">Anomalies</button>
+</div>
+
+<div class="tab-panel active" id="tab-overview">
+  <div class="meta-grid">
+    <div class="item"><div class="k">Session ID</div><div class="v">#{{ session.id }}</div></div>
+    <div class="item"><div class="k">Name</div><div class="v">{{ session.session_name }}</div></div>
+    <div class="item"><div class="k">Interface</div><div class="v mono">{{ session.interface }}</div></div>
+    <div class="item"><div class="k">Status</div><div class="v">{{ session.get_status_display }}</div></div>
+    <div class="item"><div class="k">Started</div><div class="v">{{ session.started_at|date:"Y-m-d H:i:s" }}</div></div>
+    <div class="item"><div class="k">Ended</div><div class="v">{{ session.ended_at|date:"Y-m-d H:i:s"|default:"—" }}</div></div>
+    <div class="item"><div class="k">Duration</div><div class="v">{{ duration }}</div></div>
+    <div class="item"><div class="k">Protocol filter</div><div class="v">{{ session.protocol_filter|default:"none" }}</div></div>
+    <div class="item"><div class="k">Payload previews</div><div class="v">{% if session.payload_storage_enabled %}enabled{% else %}disabled{% endif %}</div></div>
+    <div class="item"><div class="k">IPv4 / IPv6</div><div class="v">{{ stats.ipv4_count }} / {{ stats.ipv6_count }}</div></div>
+  </div>
+</div>
+
+<div class="tab-panel" id="tab-protocols">
+  <div class="card">
+    <div class="card-head"><h3>Protocol Distribution</h3></div>
+    <div class="card-body">
+      <div class="chart-box" id="chart-proto-wrap"><canvas id="chart-proto"></canvas></div>
+      <table class="data mt">
+        <thead><tr><th>Protocol</th><th class="right">Packets</th><th class="right">Share</th></tr></thead>
+        <tbody>
+        {% for label, count in protocol_distribution %}
+          <tr><td><span class="badge {{ label }}">{{ label }}</span></td><td class="right tnum">{{ count }}</td><td class="right tnum">{% widthratio count stats.packet_count 100 %}%</td></tr>
+        {% empty %}
+          <tr><td colspan="3" class="faint">No packets in this session.</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="tab-panel" id="tab-timeline">
+  <div class="card">
+    <div class="card-head"><h3>Traffic Timeline (60s buckets)</h3></div>
+    <div class="card-body">
+      <div class="chart-box" id="chart-timeline-wrap"><canvas id="chart-timeline"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<div class="tab-panel" id="tab-dns">
+  <div class="card">
+    <div class="card-head"><h3>Top DNS Queries</h3></div>
+    <div class="card-body no-pad">
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th>Query Name</th><th>Type</th><th class="right">Count</th></tr></thead>
+          <tbody>
+          {% for row in dns_top %}
+            <tr><td class="mono">{{ row.query_name }}</td><td>{{ row.query_type }}</td><td class="right tnum">{{ row.total }}</td></tr>
+          {% empty %}
+            <tr><td colspan="3" class="faint">No DNS queries captured in this session.</td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tab-panel" id="tab-ips">
+  <div class="grid cols-2">
+    <div class="card">
+      <div class="card-head"><h3>Top Source IPs</h3></div>
+      <div class="card-body no-pad">
+        <div class="table-wrap"><table class="data">
+          <thead><tr><th>IP</th><th class="right">Packets</th></tr></thead>
+          <tbody>
+          {% for ip, total in stats.top_sources %}<tr><td class="mono">{{ ip }}</td><td class="right tnum">{{ total }}</td></tr>
+          {% empty %}<tr><td colspan="2" class="faint">No data.</td></tr>{% endfor %}
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>Top Destination IPs</h3></div>
+      <div class="card-body no-pad">
+        <div class="table-wrap"><table class="data">
+          <thead><tr><th>IP</th><th class="right">Packets</th></tr></thead>
+          <tbody>
+          {% for ip, total in stats.top_destinations %}<tr><td class="mono">{{ ip }}</td><td class="right tnum">{{ total }}</td></tr>
+          {% empty %}<tr><td colspan="2" class="faint">No data.</td></tr>{% endfor %}
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tab-panel" id="tab-ports">
+  <div class="grid cols-2">
+    <div class="card">
+      <div class="card-head"><h3>Top Source Ports</h3></div>
+      <div class="card-body no-pad">
+        <div class="table-wrap"><table class="data">
+          <thead><tr><th>Port</th><th class="right">Packets</th></tr></thead>
+          <tbody>
+          {% for port, total in stats.top_source_ports %}<tr><td class="mono">{{ port }}</td><td class="right tnum">{{ total }}</td></tr>
+          {% empty %}<tr><td colspan="2" class="faint">No data.</td></tr>{% endfor %}
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>Top Destination Ports</h3></div>
+      <div class="card-body no-pad">
+        <div class="table-wrap"><table class="data">
+          <thead><tr><th>Port</th><th class="right">Packets</th></tr></thead>
+          <tbody>
+          {% for port, total in stats.top_destination_ports %}<tr><td class="mono">{{ port }}</td><td class="right tnum">{{ total }}</td></tr>
+          {% empty %}<tr><td colspan="2" class="faint">No data.</td></tr>{% endfor %}
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tab-panel" id="tab-packets">
+  <div class="card">
+    <div class="card-head">
+      <h3>Session Packets</h3>
+      <a class="btn sm" href="{% url 'packet_list' %}?session={{ session.id }}">Open in Explorer</a>
+    </div>
+    <div class="card-body no-pad">
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th>Time</th><th>Protocol</th><th>Source</th><th>Destination</th><th class="right">Len</th><th>Flags</th></tr></thead>
+          <tbody>
+          {% for p in session.packets.all|slice:":25" %}
+            <tr>
+              <td class="small faint">{{ p.timestamp|date:"H:i:s.u"|slice:":12" }}</td>
+              <td><span class="badge {{ p.protocol }}">{{ p.protocol }}</span></td>
+              <td class="mono">{{ p.source_ip|default:"—" }}{% if p.source_port %}:{{ p.source_port }}{% endif %}</td>
+              <td class="mono">{{ p.destination_ip|default:"—" }}{% if p.destination_port %}:{{ p.destination_port }}{% endif %}</td>
+              <td class="right tnum">{{ p.packet_length }}</td>
+              <td class="mono faint">{{ p.tcp_flags|default:"—" }}</td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="6"><div class="empty"><div class="title">No packets in this session</div></div></td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tab-panel" id="tab-anomalies">
+  {% if stats.anomalies %}
+    {% for a in stats.anomalies %}
+      <div class="anomaly {{ a.severity }}">
+        <div class="t">[{{ a.severity|upper }}] {{ a.title }}</div>
+        <div class="d">{{ a.description }}</div>
+      </div>
+    {% endfor %}
+    <div class="alert info">Passive heuristic indicators only — not definitive intrusion-detection results. Requires human investigation.</div>
+  {% else %}
+    <div class="empty">
+      <div class="icon">✅</div>
+      <div class="title">No anomaly indicators exceeded configured thresholds</div>
+      <div class="sub">Passive heuristics found nothing unusual in this session.</div>
+    </div>
+  {% endif %}
+</div>
+
+{{ chart_data|json_script:"session-chart-data" }}
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function () {
+  function read(id) {
+    var el = document.getElementById(id);
+    if (!el) return null;
+    try { return JSON.parse(el.textContent); } catch (e) { return null; }
+  }
+  var data = read("session-chart-data");
+  if (!data) return;
+
+  SnifferCharts.pie("chart-proto", data.protocols.map(function (p) { return p[0]; }),
+    data.protocols.map(function (p) { return p[1]; }));
+  SnifferCharts.line("chart-timeline", data.timeline.map(function (b) { return b[0]; }),
+    data.timeline.map(function (b) { return b[1]; }), "Packets", "#34d399");
+})();
+</script>
+{% endblock %}

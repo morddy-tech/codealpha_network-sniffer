@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Network Interfaces · Network Traffic Analyzer{% endblock %}
+{% block page_title %}Network Interfaces{% endblock %}
+{% block content %}
+
+<div class="page-head">
+  <p class="sub">Interfaces discovered on the capture host. Interface discovery is dynamic — nothing is hard-coded.</p>
+  {% if user.is_staff %}
+  <a class="btn" href="{% url 'interfaces' %}?refresh=1">Refresh Detection</a>
+  {% endif %}
+</div>
+
+<div class="grid cols-2">
+  {% for iface in interfaces %}
+    <div class="card">
+      <div class="card-head">
+        <h3 class="mono">{{ iface.name }}</h3>
+        <span class="status-pill {% if iface.is_active %}running{% else %}idle{% endif %}">
+          {% if iface.is_active %}DETECTED{% else %}IDLE{% endif %}
+        </span>
+      </div>
+      <div class="card-body">
+        <div class="meta-grid">
+          <div class="item"><div class="k">Description</div><div class="v">{{ iface.description|default:"—" }}</div></div>
+          <div class="item"><div class="k">MAC Address</div><div class="v mono">{{ iface.mac_address|default:"—" }}</div></div>
+          <div class="item"><div class="k">Last seen</div><div class="v">{{ iface.last_seen|date:"Y-m-d H:i"|default:"—" }}</div></div>
+          <div class="item"><div class="k">Registered</div><div class="v">{{ iface.created_at|date:"Y-m-d H:i" }}</div></div>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <div class="card">
+      <div class="card-body">
+        <div class="empty">
+          <div class="icon">🔌</div>
+          <div class="title">No interfaces discovered</div>
+          <div class="sub">
+            Run <code>python manage.py list_interfaces</code> for diagnostics.<br>
+            On Windows: install <a href="https://npcap.com" target="_blank" rel="noopener">Npcap</a> and restart.
+            On Linux/macOS: the capture process needs appropriate privileges.
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

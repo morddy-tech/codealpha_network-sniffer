@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}CodeAlpha Advanced Network Traffic Analyzer{% endblock %}
+{% block content %}
+
+<section class="landing">
+  <div class="hero">
+    <span class="kicker">CODEALPHA INTERNSHIP · TASK 1 — BASIC NETWORK SNIFFER</span>
+    <h1>Advanced Network<br><span class="grad">Traffic Analyzer</span></h1>
+    <p class="sub">Real-Time Network Traffic Capture, Analysis &amp; Security Monitoring</p>
+    <div class="cta">
+      {% if user.is_authenticated %}
+        <a class="btn primary" href="{% url 'dashboard' %}">Open Dashboard</a>
+      {% else %}
+        <a class="btn primary" href="{% url 'login' %}">Open Dashboard</a>
+        <a class="btn" href="/admin/">Administrator Login</a>
+      {% endif %}
+    </div>
+  </div>
+
+  <section class="landing-section">
+    <h2>Project Overview</h2>
+    <p class="lead">
+      A production-grade, passive network monitoring and packet analysis platform built for the
+      CodeAlpha cybersecurity internship. It captures traffic from an authorized network interface,
+      parses protocol metadata with Scapy, stores sanitized records in Django's ORM, and presents a
+      professional SOC-style dashboard with analytics, DNS analysis, filtering, reporting and
+      passive anomaly indicators.
+    </p>
+  </section>
+
+  <section class="landing-section">
+    <h2>Core Features</h2>
+    <div class="feature-grid">
+      <div class="feature">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1"/></svg></div>
+        <h3>Live Packet Capture</h3>
+        <p>Background capture worker with interface selection, packet limits, timeouts and protocol filters — without ever blocking the web server.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></div>
+        <h3>Protocol Analysis</h3>
+        <p>IPv4, IPv6, TCP, UDP, ICMP, ICMPv6, ARP and DNS metadata extraction with defensive layer handling for malformed packets.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div>
+        <h3>Security Analytics</h3>
+        <p>Traffic timelines, protocol distribution, top IPs/ports, packet-size histograms and clearly-labeled passive anomaly indicators.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/></svg></div>
+        <h3>DNS Analysis</h3>
+        <p>Query frequency, first/last seen, query types and response codes with search and filtering.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></div>
+        <h3>Reporting</h3>
+        <p>One-click CSV, JSON and standalone HTML reports per capture session, generated in memory with validated session IDs.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Privacy by Design</h3>
+        <p>Payload previews disabled by default, strictly size-limited, configurable retention and explicit session deletion.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="landing-section">
+    <h2>Supported Protocols</h2>
+    <div class="protocol-chips">
+      <span class="badge TCP">IPv4</span>
+      <span class="badge IPv6">IPv6</span>
+      <span class="badge TCP">TCP</span>
+      <span class="badge UDP">UDP</span>
+      <span class="badge ICMP">ICMP</span>
+      <span class="badge ICMPv6">ICMPv6</span>
+      <span class="badge ARP">ARP</span>
+      <span class="badge DNS">DNS</span>
+    </div>
+  </section>
+
+  <section class="landing-section">
+    <h2>Architecture</h2>
+    <p class="lead">Packet capture runs in a separate worker from the Django web application, sharing only the database.</p>
+    <div class="arch-diagram">
+      <div class="node">Browser / Dashboard</div>
+      <div class="arrow">▼</div>
+      <div class="node">Django Web App</div>
+      <div class="arrow">▼</div>
+      <div class="node">Django ORM / Database</div>
+      <div class="arrow">▲</div>
+      <div class="node">Capture Worker (Scapy)</div>
+      <div class="arrow">▼</div>
+      <div class="node">Network Interface</div>
+    </div>
+  </section>
+
+  <section class="landing-section">
+    <h2>Security</h2>
+    <p class="lead">Authentication, staff-only capture controls, CSRF protection, security headers, input validation, limited payload previews and no external data sharing by default.</p>
+  </section>
+
+  <section class="landing-section">
+    <h2>Technology Stack</h2>
+    <div class="stack-tags">
+      <span>Python 3.11+</span><span>Django 5/6</span><span>Scapy</span><span>SQLite (PostgreSQL-ready)</span><span>Chart.js</span><span>HTML5 / CSS3 / JavaScript</span><span>Django TestCase</span>
+    </div>
+  </section>
+
+  <section class="landing-section">
+    <h2>How It Works</h2>
+    <p class="lead">
+      1. An administrator selects an authorized interface and starts a capture.<br>
+      2. The capture worker parses each packet defensively and stores sanitized metadata.<br>
+      3. The dashboard aggregates statistics, timelines and DNS activity.<br>
+      4. Analysts search packets, inspect protocol details and generate reports.
+    </p>
+  </section>
+
+  <section class="landing-section">
+    <div class="ethics">
+      <h3>Ethical Use</h3>
+      <p>
+        This is a <strong>passive</strong> network monitoring and analysis platform. It does not implement
+        injection, modification, interception of unauthorized traffic, credential harvesting or any
+        offensive capability. Only monitor networks and devices that you own or have explicit
+        authorization to monitor. Unauthorized network interception is illegal in most jurisdictions.
+      </p>
+    </div>
+  </section>
+
+  <section class="landing-section center">
+    <p class="faint">CodeAlpha Basic Network Sniffer · Task 1</p>
+  </section>
+</section>
+
+{% endblock %}

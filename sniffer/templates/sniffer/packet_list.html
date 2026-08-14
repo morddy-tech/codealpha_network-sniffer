@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block title %}Packet Explorer · Network Traffic Analyzer{% endblock %}
+{% block page_title %}Packet Explorer{% endblock %}
+{% block content %}
+
+<div class="card mb">
+  <div class="card-body">
+    <form method="get" action="{% url 'packet_list' %}">
+      <div class="form-row">
+        <div class="field">
+          <label for="{{ form.q.id_for_label }}">{{ form.q.label }}</label>
+          {{ form.q }}
+        </div>
+        <div class="field">
+          <label for="{{ form.protocol.id_for_label }}">{{ form.protocol.label }}</label>
+          {{ form.protocol }}
+        </div>
+        <div class="field">
+          <label for="{{ form.session.id_for_label }}">{{ form.session.label }}</label>
+          {{ form.session }}
+        </div>
+        <div class="field">
+          <label for="{{ form.source_ip.id_for_label }}">{{ form.source_ip.label }}</label>
+          {{ form.source_ip }}
+        </div>
+        <div class="field">
+          <label for="{{ form.destination_ip.id_for_label }}">{{ form.destination_ip.label }}</label>
+          {{ form.destination_ip }}
+        </div>
+        <div class="field">
+          <label for="{{ form.port.id_for_label }}">{{ form.port.label }}</label>
+          {{ form.port }}
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label for="{{ form.date_from.id_for_label }}">{{ form.date_from.label }}</label>
+          {{ form.date_from }}
+        </div>
+        <div class="field">
+          <label for="{{ form.date_to.id_for_label }}">{{ form.date_to.label }}</label>
+          {{ form.date_to }}
+        </div>
+        <div class="field">
+          <label>&nbsp;</label>
+          <div class="actions">
+            <button class="btn" type="submit">Search</button>
+            <a class="btn sm" href="{% url 'packet_list' %}">Reset</a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head">
+    <h3>{{ total }} packet(s)</h3>
+    <span class="hint">Metadata only — payload previews limited to {{ max_payload_bytes }} bytes when enabled.</span>
+  </div>
+  <div class="card-body no-pad">
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th>Time</th><th>Protocol</th><th>Source</th><th>Destination</th>
+            <th class="right">SPort</th><th class="right">DPort</th><th class="right">Len</th>
+            <th>Flags</th><th>Session</th><th></th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for p in page_obj %}
+          <tr>
+            <td class="small faint">{{ p.timestamp|date:"Y-m-d H:i:s" }}</td>
+            <td><span class="badge {{ p.protocol }}">{{ p.protocol }}</span></td>
+            <td class="mono">{{ p.source_ip|default:"—" }}</td>
+            <td class="mono">{{ p.destination_ip|default:"—" }}</td>
+            <td class="right tnum">{{ p.source_port|default:"—" }}</td>
+            <td class="right tnum">{{ p.destination_port|default:"—" }}</td>
+            <td class="right tnum">{{ p.packet_length }}</td>
+            <td class="mono faint">{{ p.tcp_flags|default:"—" }}</td>
+            <td class="small"><a href="{% url 'session_detail' p.session_id %}">#{{ p.session_id }}</a></td>
+            <td><a class="btn sm" href="{% url 'packet_detail' p.id %}">Detail</a></td>
+          </tr>
+        {% empty %}
+          <tr><td colspan="10"><div class="empty">
+            <div class="icon">🔍</div>
+            <div class="title">No packets match your filters</div>
+            <div class="sub">Adjust the search criteria or start a capture.</div>
+          </div></td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% if page_obj.has_other_pages %}
+    <div class="pagination">
+      <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }} · {{ total }} total</span>
+      <div class="page-links">
+        {% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}&{% for k,v in request.GET.items %}{% if k != 'page' %}{{ k }}={{ v }}&{% endif %}{% endfor %}">‹ Prev</a>{% endif %}
+        <span class="current">{{ page_obj.number }}</span>
+        {% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}&{% for k,v in request.GET.items %}{% if k != 'page' %}{{ k }}={{ v }}&{% endif %}{% endfor %}">Next ›</a>{% endif %}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

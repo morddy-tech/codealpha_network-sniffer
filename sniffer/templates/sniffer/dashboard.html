@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Dashboard · Network Traffic Analyzer{% endblock %}
+{% block page_title %}Security Dashboard{% endblock %}
+{% block content %}
+
+{% if not has_data %}
+  <div class="banner-note">
+    No capture data available. Start a capture from the <a href="{% url 'capture' %}">Live Capture</a> page
+    (or run <code>python manage.py capture --interface "Wi-Fi" --count 200</code>) to populate this dashboard
+    with real, authorized traffic.
+  </div>
+{% endif %}
+
+<div class="kpi-row">
+  <div class="stat-card accent">
+    <div class="label">Capture Sessions</div>
+    <div class="value">{{ summary.session_count }}</div>
+    <div class="sub">total sessions</div>
+  </div>
+  <div class="stat-card green">
+    <div class="label">Packets Captured</div>
+    <div class="value">{{ summary.packet_count }}</div>
+    <div class="sub">sanitized metadata records</div>
+  </div>
+  <div class="stat-card yellow">
+    <div class="label">Traffic Volume</div>
+    <div class="value">{{ summary.total_bytes|filesizeformat }}</div>
+    <div class="sub">bytes captured</div>
+  </div>
+  <div class="stat-card purple">
+    <div class="label">DNS Queries</div>
+    <div class="value">{{ summary.dns_query_count }}</div>
+    <div class="sub">resolved query names</div>
+  </div>
+</div>
+
+<div class="grid cols-4 mb">
+  <div class="stat-card"><div class="label">TCP</div><div class="value" style="color:var(--accent-2)">{{ summary.tcp_count }}</div><div class="sub">packets</div></div>
+  <div class="stat-card"><div class="label">UDP</div><div class="value" style="color:var(--purple)">{{ summary.udp_count }}</div><div class="sub">packets</div></div>
+  <div class="stat-card"><div class="label">ICMP</div><div class="value" style="color:var(--red)">{{ summary.icmp_count }}</div><div class="sub">packets</div></div>
+  <div class="stat-card"><div class="label">ARP</div><div class="value" style="color:var(--yellow)">{{ summary.arp_count }}</div><div class="sub">packets</div></div>
+</div>
+
+<div class="grid cols-2 mb">
+  <div class="card">
+    <div class="card-head"><h3>Packets Over Time (60s buckets)</h3></div>
+    <div class="card-body"><div class="chart-box" id="chart-timeline-wrap"><canvas id="chart-timeline"></canvas></div></div>
+  </div>
+  <div class="card">
+    <div class="card-head"><h3>Protocol Distribution</h3></div>
+    <div class="card-body"><div class="chart-box" id="chart-protocol-wrap"><canvas id="chart-protocol"></canvas></div></div>
+  </div>
+</div>
+
+<div class="grid cols-3 mb">
+  <div class="card">
+    <div class="card-head"><h3>TCP vs UDP</h3></div>
+    <div class="card-body"><div class="chart-box sm" id="chart-tcpudp-wrap"><canvas id="chart-tcpudp"></canvas></div></div>
+  </div>
+  <div class="card">
+    <div class="card-head"><h3>IPv4 vs IPv6</h3></div>
+    <div class="card-body"><div class="chart-box sm" id="chart-ipver-wrap"><canvas id="chart-ipver"></canvas></div></div>
+  </div>
+  <div class="card">
+    <div class="card-head"><h3>Top Ports</h3></div>
+    <div class="card-body"><div class="chart-box sm" id="chart-ports-wrap"><canvas id="chart-ports"></canvas></div></div>
+  </div>
+</div>
+
+<div class="grid cols-2 mb">
+  <div class="card">
+    <div class="card-head"><h3>Top Source IPs</h3></div>
+    <div class="card-body no-pad">
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th>IP Address</th><th class="right">Packets</th></tr></thead>
+          <tbody>
+          {% for ip, total in top_activity.sources %}
+            <tr><td class="mono">{{ ip }}</td><td class="right tnum">{{ total }}</td></tr>
+          {% empty %}
+            <tr><td colspan="2" class="faint">No capture data available.</td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head"><h3>Top Destination IPs</h3></div>
+    <div class="card-body no-pad">
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th>IP Address</th><th class="right">Packets</th></tr></thead>
+          <tbody>
+          {% for ip, total in top_activity.destinations %}
+            <tr><td class="mono">{{ ip }}</td><td class="right tnum">{{ total }}</td></tr>
+          {% empty %}
+            <tr><td colspan="2" class="faint">No capture data available.</td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="grid cols-2">
+  <div class="card">
+    <div class="card-head"><h3>Recent Capture Sessions</h3><a class="small" href="{% url 'session_list' %}">View all</a></div>
+    <div class="card-body no-pad">
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th>Session</th><th>Interface</th><th>Status</th><th class="right">Packets</th><th class="right">Size</th></tr></thead>
+          <tbody>
+          {% for s in recent_sessions %}
+            <tr>
+              <td><a href="{% url 'session_detail' s.id %}">{{ s.session_name }}</a></td>
+              <td class="mono">{{ s.interface }}</td>
+              <td><span class="status-pill {{ s.status }}">{{ s.get_status_display|upper }}</span></td>
+              <td class="right tnum">{{ s.packet_count }}</td>
+              <td class="right tnum">{{ s.total_bytes|filesizeformat }}</td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="5" class="faint">No capture sessions yet.</td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head"><h3>Recent Packets</h3><a class="small" href="{% url 'packet_list' %}">Explore</a></div>
+    <div class="card-body no-pad">
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th>Time</th><th>Protocol</th><th>Source</th><th>Destination</th><th class="right">Len</th></tr></thead>
+          <tbody>
+          {% for p in recent_packets %}
+            <tr>
+              <td class="small faint">{{ p.timestamp|date:"H:i:s" }}</td>
+              <td><span class="badge {{ p.protocol }}">{{ p.protocol }}</span></td>
+              <td class="mono">{{ p.source_ip|default:"—" }}{% if p.source_port %}:{{ p.source_port }}{% endif %}</td>
+              <td class="mono">{{ p.destination_ip|default:"—" }}{% if p.destination_port %}:{{ p.destination_port }}{% endif %}</td>
+              <td class="right tnum">{{ p.packet_length }}</td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="5" class="faint">No capture data available.</td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ chart_data|json_script:"dash-chart-data" }}
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function () {
+  function dataFrom(id) {
+    var el = document.getElementById(id);
+    if (!el) return null;
+    try { return JSON.parse(el.textContent); } catch (e) { return null; }
+  }
+
+  var d = dataFrom("dash-chart-data");
+  if (!d) return;
+
+  var timeline = d.timeline || [];
+  SnifferCharts.line("chart-timeline", timeline.map(function (b) { return b[0]; }),
+    timeline.map(function (b) { return b[1]; }), "Packets", "#38bdf8");
+
+  var proto = d.protocol_distribution || [];
+  SnifferCharts.pie("chart-protocol", proto.map(function (p) { return p[0]; }),
+    proto.map(function (p) { return p[1]; }));
+
+  var summary = JSON.parse((document.getElementById("dash-chart-data").textContent || "{}")).summary;
+  if (summary) {
+    SnifferCharts.bar("chart-tcpudp", ["TCP", "UDP"], [summary.tcp_count, summary.udp_count], "Packets");
+    SnifferCharts.bar("chart-ipver", ["IPv4", "IPv6"], [summary.ipv4_count, summary.ipv6_count], "Packets");
+  }
+
+  var ports = d.top_ports || [];
+  SnifferCharts.bar("chart-ports", ports.map(function (p) { return p[0]; }),
+    ports.map(function (p) { return p[1]; }), "Packets", true);
+})();
+</script>
+{% endblock %}

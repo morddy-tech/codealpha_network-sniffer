@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}Traffic Analytics · Network Traffic Analyzer{% endblock %}
+{% block page_title %}Traffic Analytics{% endblock %}
+{% block content %}
+
+{% if not overview.total_packets %}
+  <div class="banner-note">
+    No capture data available for the last 7 days. Start a capture to populate these analytics.
+  </div>
+{% endif %}
+
+<div class="grid cols-2 mb">
+  <div class="card">
+    <div class="card-head"><h3>Protocol Distribution (7 days)</h3></div>
+    <div class="card-body"><div class="chart-box" id="chart-proto"><canvas></canvas></div></div>
+  </div>
+  <div class="card">
+    <div class="card-head"><h3>Packet Size Distribution</h3></div>
+    <div class="card-body"><div class="chart-box" id="chart-sizes"><canvas></canvas></div></div>
+  </div>
+</div>
+
+<div class="card mb">
+  <div class="card-head"><h3>Traffic Volume Over Time (60s buckets)</h3></div>
+  <div class="card-body"><div class="chart-box" id="chart-volume"><canvas></canvas></div></div>
+</div>
+
+<div class="grid cols-2 mb">
+  <div class="card">
+    <div class="card-head"><h3>Top Source IPs</h3></div>
+    <div class="card-body no-pad">
+      <div class="table-wrap"><table class="data">
+        <thead><tr><th>IP</th><th class="right">Packets</th></tr></thead>
+        <tbody>
+        {% for ip, total in overview.top_sources %}<tr><td class="mono">{{ ip }}</td><td class="right tnum">{{ total }}</td></tr>
+        {% empty %}<tr><td colspan="2" class="faint">No capture data available.</td></tr>{% endfor %}
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head"><h3>Top Destination IPs</h3></div>
+    <div class="card-body no-pad">
+      <div class="table-wrap"><table class="data">
+        <thead><tr><th>IP</th><th class="right">Packets</th></tr></thead>
+        <tbody>
+        {% for ip, total in overview.top_destinations %}<tr><td class="mono">{{ ip }}</td><td class="right tnum">{{ total }}</td></tr>
+        {% empty %}<tr><td colspan="2" class="faint">No capture data available.</td></tr>{% endfor %}
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</div>
+
+<div class="grid cols-2">
+  <div class="card">
+    <div class="card-head"><h3>Top Source Ports</h3></div>
+    <div class="card-body no-pad">
+      <div class="table-wrap"><table class="data">
+        <thead><tr><th>Port</th><th class="right">Packets</th></tr></thead>
+        <tbody>
+        {% for port, total in overview.top_source_ports %}<tr><td class="mono">{{ port }}</td><td class="right tnum">{{ total }}</td></tr>
+        {% empty %}<tr><td colspan="2" class="faint">No capture data available.</td></tr>{% endfor %}
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head"><h3>Top Destination Ports</h3></div>
+    <div class="card-body no-pad">
+      <div class="table-wrap"><table class="data">
+        <thead><tr><th>Port</th><th class="right">Packets</th></tr></thead>
+        <tbody>
+        {% for port, total in overview.top_destination_ports %}<tr><td class="mono">{{ port }}</td><td class="right tnum">{{ total }}</td></tr>
+        {% empty %}<tr><td colspan="2" class="faint">No capture data available.</td></tr>{% endfor %}
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</div>
+
+{{ chart_data|json_script:"analytics-chart-data" }}
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function () {
+  function read(id) {
+    var el = document.getElementById(id);
+    if (!el) return null;
+    try { return JSON.parse(el.textContent); } catch (e) { return null; }
+  }
+  var d = read("analytics-chart-data");
+  if (!d) return;
+
+  SnifferCharts.pie("chart-proto", d.protocols.map(function (p) { return p[0]; }),
+    d.protocols.map(function (p) { return p[1]; }));
+  SnifferCharts.bar("chart-sizes", d.sizes.map(function (p) { return p[0]; }),
+    d.sizes.map(function (p) { return p[1]; }), "Packets");
+  SnifferCharts.line("chart-volume", d.timeline.map(function (b) { return b[0]; }),
+    d.timeline.map(function (b) { return b[2]; }), "Bytes", "#fbbf24");
+})();
+</script>
+{% endblock %}

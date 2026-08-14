@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Settings · Network Traffic Analyzer{% endblock %}
+{% block page_title %}Settings{% endblock %}
+{% block content %}
+
+<div class="alert info mb">
+  Changes apply to future captures. Existing sessions keep their original payload configuration.
+</div>
+
+<div class="grid cols-2">
+  <div class="card">
+    <div class="card-head"><h3>Payload &amp; Retention</h3></div>
+    <div class="card-body">
+      <form method="post" action="{% url 'settings' %}">
+        {% csrf_token %}
+        <div class="field checkbox-row">
+          {{ form.payload_storage_enabled }}
+          <div>
+            <label for="{{ form.payload_storage_enabled.id_for_label }}" style="margin:0">{{ form.payload_storage_enabled.label }}</label>
+            <div class="help">Hex + ASCII previews of up to the configured byte limit. OFF by default for privacy.</div>
+          </div>
+        </div>
+        <div class="field">
+          <label for="{{ form.max_payload_preview_bytes.id_for_label }}">{{ form.max_payload_preview_bytes.label }}</label>
+          {{ form.max_payload_preview_bytes }}
+          <div class="help">Safe range 8–4096 bytes. Previews are always truncated.</div>
+        </div>
+        <div class="field">
+          <label for="{{ form.retention_days.id_for_label }}">{{ form.retention_days.label }}</label>
+          {{ form.retention_days }}
+          <div class="help">Used by <code>python manage.py cleanup_packets --older-than N</code>. Nothing is deleted automatically.</div>
+        </div>
+        <button class="btn primary" type="submit">Save Settings</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h3>Current Configuration</h3></div>
+    <div class="card-body">
+      <div class="meta-grid">
+        <div class="item"><div class="k">Payload storage</div><div class="v">{% if current.payload_storage_enabled %}enabled{% else %}disabled{% endif %}</div></div>
+        <div class="item"><div class="k">Max preview bytes</div><div class="v">{{ current.max_payload_preview_bytes }}</div></div>
+        <div class="item"><div class="k">Retention</div><div class="v">{{ current.retention_days }} days</div></div>
+        <div class="item"><div class="k">Threat intelligence</div><div class="v">{% if current.threat_intel_enabled %}enabled{% else %}disabled{% endif %}</div></div>
+      </div>
+
+      <h4 class="mt" style="font-size:13px;color:var(--text-dim)">Data Management</h4>
+      <p class="small muted">
+        Delete individual sessions from the <a href="{% url 'session_list' %}">session list</a>, or clean up old
+        data from the CLI:
+      </p>
+      <pre class="payload-box">python manage.py cleanup_packets --older-than 30 --dry-run
+python manage.py cleanup_packets --older-than 30</pre>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

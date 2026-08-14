@@ -1,0 +1,16 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.git/
+.gitignore
+.env
+db.sqlite3
+*.sqlite3
+staticfiles/
+logs/
+docs/
+screenshots/
+tests/
+.pytest_cache/
+.coverage

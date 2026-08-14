@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Live Capture · Network Traffic Analyzer{% endblock %}
+{% block page_title %}Live Capture{% endblock %}
+{% block content %}
+
+<div class="banner-note">
+  Passive capture only. Start captures exclusively on networks and devices that you own or are
+  explicitly authorized to monitor.
+</div>
+
+<div class="card capture-panel {% if running %}running{% endif %} mb">
+  <div class="card-head">
+    <h3>Capture Status</h3>
+    <span class="status-pill idle" id="capture-status-pill">IDLE</span>
+  </div>
+  <div class="card-body">
+    <div class="capture-status">
+      <div class="stat"><div class="k">Session</div><div class="v" id="cap-session">—</div></div>
+      <div class="stat"><div class="k">Interface</div><div class="v mono" id="cap-interface">—</div></div>
+      <div class="stat"><div class="k">Packets</div><div class="v" id="cap-packets">0</div></div>
+      <div class="stat"><div class="k">Bytes</div><div class="v" id="cap-bytes">0 B</div></div>
+      <div class="stat"><div class="k">Filter</div><div class="v" id="cap-filter">all</div></div>
+      <div class="stat"><div class="k">Started</div><div class="v small" id="cap-started">—</div></div>
+      <div class="stat"><div class="k">Duration</div><div class="v" id="capture-timer" {% if running %}data-start="{{ running.started_at.isoformat }}"{% endif %}>00:00:00</div></div>
+    </div>
+    <div id="capture-error" class="alert error" style="display:none"></div>
+    <div class="actions">
+      <button class="btn danger" id="capture-stop" {% if not running %}disabled{% endif %}>Stop Capture</button>
+    </div>
+  </div>
+</div>
+
+<div class="card" id="capture-form-card">
+  <div class="card-head"><h3>New Capture</h3></div>
+  <div class="card-body">
+    <form id="capture-form" method="post" action="{% url 'capture_start' %}">
+      {% csrf_token %}
+      <div class="form-row">
+        <div class="field">
+          <label for="{{ form.session_name.id_for_label }}">{{ form.session_name.label }}</label>
+          {{ form.session_name }}
+        </div>
+        <div class="field">
+          <label for="{{ form.interface.id_for_label }}">{{ form.interface.label }}</label>
+          {{ form.interface }}
+          {% if form.interface.errors %}<div class="help" style="color:var(--red)">{{ form.interface.errors.0 }}</div>{% endif %}
+        </div>
+        <div class="field">
+          <label for="{{ form.packet_count.id_for_label }}">{{ form.packet_count.label }}</label>
+          {{ form.packet_count }}
+        </div>
+        <div class="field">
+          <label for="{{ form.protocol.id_for_label }}">{{ form.protocol.label }}</label>
+          {{ form.protocol }}
+        </div>
+      </div>
+      <div class="field checkbox-row">
+        {{ form.payload }}
+        <div>
+          <label for="{{ form.payload.id_for_label }}" style="margin:0">{{ form.payload.label }}</label>
+          <div class="help">{{ form.payload.help_text }} (current limit: {{ max_payload_bytes }} bytes)</div>
+        </div>
+      </div>
+      <button type="button" class="btn primary" id="capture-start">Start Capture</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'sniffer/js/capture.js' %}"></script>
+{% endblock %}

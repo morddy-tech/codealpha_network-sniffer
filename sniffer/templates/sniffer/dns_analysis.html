@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %}DNS Analysis · Network Traffic Analyzer{% endblock %}
+{% block page_title %}DNS Analysis{% endblock %}
+{% block content %}
+
+<div class="banner-note">
+  Query names are presented as observed traffic only. This tool does not automatically classify
+  domains as malicious — that requires an explicitly configured threat-intelligence source.
+</div>
+
+<div class="grid cols-2 mb">
+  <div class="card">
+    <div class="card-head"><h3>Top Query Names</h3></div>
+    <div class="card-body no-pad">
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th>Query Name</th><th>Type</th><th class="right">Frequency</th></tr></thead>
+          <tbody>
+          {% for row in top_names %}
+            <tr><td class="mono">{{ row.query_name }}</td><td>{{ row.query_type }}</td><td class="right tnum">{{ row.total }}</td></tr>
+          {% empty %}
+            <tr><td colspan="3" class="faint">No DNS queries captured yet.</td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head"><h3>Query Type Distribution</h3></div>
+    <div class="card-body"><div class="chart-box" id="chart-qtypes"><canvas></canvas></div></div>
+  </div>
+</div>
+
+<div class="card mb">
+  <div class="card-body">
+    <form method="get" action="{% url 'dns_analysis' %}">
+      <div class="form-row">
+        <div class="field">
+          <label for="{{ form.q.id_for_label }}">{{ form.q.label }}</label>
+          {{ form.q }}
+        </div>
+        <div class="field">
+          <label for="{{ form.query_type.id_for_label }}">{{ form.query_type.label }}</label>
+          {{ form.query_type }}
+        </div>
+        <div class="field">
+          <label>&nbsp;</label>
+          <div class="actions">
+            <button class="btn" type="submit">Search</button>
+            <a class="btn sm" href="{% url 'dns_analysis' %}">Reset</a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head"><h3>{{ total }} DNS Query Record(s)</h3></div>
+  <div class="card-body no-pad">
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr><th>Query Name</th><th>Type</th><th>Response</th><th>Source IP</th><th>Time</th><th>Packet</th></tr>
+        </thead>
+        <tbody>
+        {% for q in page_obj %}
+          <tr>
+            <td class="mono">{{ q.query_name }}</td>
+            <td>{{ q.query_type }}</td>
+            <td class="mono">{{ q.response_code|default:"—" }}</td>
+            <td class="mono">{{ q.packet.source_ip|default:"—" }}</td>
+            <td class="small faint">{{ q.created_at|date:"Y-m-d H:i:s" }}</td>
+            <td><a class="btn sm" href="{% url 'packet_detail' q.packet_id %}">#{{ q.packet_id }}</a></td>
+          </tr>
+        {% empty %}
+          <tr><td colspan="6"><div class="empty">
+            <div class="icon">🌐</div>
+            <div class="title">No DNS queries match your filters</div>
+          </div></td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% if page_obj.has_other_pages %}
+    <div class="pagination">
+      <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+      <div class="page-links">
+        {% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}&{% for k,v in request.GET.items %}{% if k != 'page' %}{{ k }}={{ v }}&{% endif %}{% endfor %}">‹ Prev</a>{% endif %}
+        <span class="current">{{ page_obj.number }}</span>
+        {% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}&{% for k,v in request.GET.items %}{% if k != 'page' %}{{ k }}={{ v }}&{% endif %}{% endfor %}">Next ›</a>{% endif %}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{{ chart_data|json_script:"dns-chart-data" }}
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function () {
+  var el = document.getElementById("dns-chart-data");
+  if (!el) return;
+  var d;
+  try { d = JSON.parse(el.textContent); } catch (e) { return; }
+  SnifferCharts.pie("chart-qtypes", d.types.map(function (t) { return t[0]; }),
+    d.types.map(function (t) { return t[1]; }));
+})();
+</script>
+{% endblock %}

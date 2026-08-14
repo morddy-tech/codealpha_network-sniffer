@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title %}Capture Sessions · Network Traffic Analyzer{% endblock %}
+{% block page_title %}Capture Sessions{% endblock %}
+{% block content %}
+
+<div class="card mb">
+  <div class="card-body">
+    <form method="get" action="{% url 'session_list' %}">
+      <div class="form-row">
+        <div class="field">
+          <label for="{{ form.q.id_for_label }}">{{ form.q.label }}</label>
+          {{ form.q }}
+        </div>
+        <div class="field">
+          <label for="{{ form.status.id_for_label }}">{{ form.status.label }}</label>
+          {{ form.status }}
+        </div>
+        <div class="field">
+          <label>&nbsp;</label>
+          <div class="actions">
+            <button class="btn" type="submit">Filter</button>
+            <a class="btn sm" href="{% url 'session_list' %}">Reset</a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head">
+    <h3>{{ total }} Session(s)</h3>
+    <a class="btn sm primary" href="{% url 'capture' %}">New Capture</a>
+  </div>
+  <div class="card-body no-pad">
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th>ID</th><th>Session</th><th>Interface</th><th>Status</th>
+            <th class="right">Packets</th><th class="right">Bytes</th>
+            <th>Started</th><th>Duration</th><th>Payload</th><th></th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for s in page_obj %}
+          <tr>
+            <td class="mono faint">#{{ s.id }}</td>
+            <td><a href="{% url 'session_detail' s.id %}">{{ s.session_name }}</a></td>
+            <td class="mono">{{ s.interface }}</td>
+            <td><span class="status-pill {{ s.status }}">{{ s.get_status_display|upper }}</span></td>
+            <td class="right tnum">{{ s.packet_count }}</td>
+            <td class="right tnum">{{ s.total_bytes|filesizeformat }}</td>
+            <td class="small faint">{{ s.started_at|date:"Y-m-d H:i" }}</td>
+            <td class="tnum">{{ s.duration|floatformat:0 }}s</td>
+            <td>{% if s.payload_storage_enabled %}<span class="pill">enabled</span>{% else %}<span class="faint">off</span>{% endif %}</td>
+            <td>
+              <a class="btn sm" href="{% url 'session_detail' s.id %}">View</a>
+              {% if user.is_staff %}
+              <form method="post" action="{% url 'session_delete' s.id %}" style="display:inline" data-confirm="Delete session #{{ s.id }} '{{ s.session_name }}' and all of its packets? This cannot be undone.">
+                {% csrf_token %}
+                <button type="submit" class="btn sm danger">Delete</button>
+              </form>
+              {% endif %}
+            </td>
+          </tr>
+        {% empty %}
+          <tr><td colspan="10"><div class="empty">
+            <div class="icon">📭</div>
+            <div class="title">No capture sessions</div>
+            <div class="sub">Start one from the Live Capture page or the CLI.</div>
+          </div></td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% if page_obj.has_other_pages %}
+    <div class="pagination">
+      <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+      <div class="page-links">
+        {% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}{% for k,v in request.GET.items %}{% if k != 'page' %}&{{ k }}={{ v }}{% endif %}{% endfor %}">‹ Prev</a>{% endif %}
+        <span class="current">{{ page_obj.number }}</span>
+        {% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}{% for k,v in request.GET.items %}{% if k != 'page' %}&{{ k }}={{ v }}{% endif %}{% endfor %}">Next ›</a>{% endif %}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}
