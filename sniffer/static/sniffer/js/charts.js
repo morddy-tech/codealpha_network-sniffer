@@ -24,12 +24,21 @@
     );
   }
 
+  // Resolves a chart target to a <canvas>. Some templates give the wrapper
+  // <div> the chart id (e.g. <div id="chart-x"><canvas></canvas></div>),
+  // others give the <canvas> itself; both must work.
+  function canvasFor(elementId) {
+    var el = document.getElementById(elementId);
+    if (!el) return null;
+    return el.tagName === "CANVAS" ? el : el.querySelector("canvas");
+  }
+
   window.SnifferCharts = {
     palette: PALETTE,
 
     pie: function (elementId, labels, values, label) {
       if (!window.Chart || !elementId) return;
-      var el = document.getElementById(elementId);
+      var el = canvasFor(elementId);
       if (!el) return;
       new Chart(el.getContext("2d"), {
         type: "doughnut",
@@ -57,7 +66,7 @@
 
     bar: function (elementId, labels, values, label, horizontal) {
       if (!window.Chart || !elementId) return;
-      var el = document.getElementById(elementId);
+      var el = canvasFor(elementId);
       if (!el) return;
       new Chart(el.getContext("2d"), {
         type: "bar",
@@ -89,7 +98,7 @@
 
     line: function (elementId, labels, values, label, fillColor) {
       if (!window.Chart || !elementId) return;
-      var el = document.getElementById(elementId);
+      var el = canvasFor(elementId);
       if (!el) return;
       new Chart(el.getContext("2d"), {
         type: "line",

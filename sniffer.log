@@ -1038,3 +1038,44 @@ RuntimeError: Scapy is not installed; live capture is unavailable.
 2026-08-14 23:00:20,070 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
 2026-08-14 23:00:20,071 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
 2026-08-14 23:00:41,957 INFO django.server "GET /interfaces/ HTTP/1.1" 200 49591
+2026-08-14 23:03:02,149 ERROR django.security.DisallowedHost Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Eco Mike\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "C:\Users\Eco Mike\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 440, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Eco Mike\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Eco Mike\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 210, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+2026-08-14 23:03:02,283 ERROR django.security.DisallowedHost Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Eco Mike\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "C:\Users\Eco Mike\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 440, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Eco Mike\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Eco Mike\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 210, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+2026-08-14 23:03:17,152 WARNING django.request Not Found: /dns/
+2026-08-14 23:04:04,768 WARNING django.request Not Found: /dns_analysis/
+2026-08-14 23:09:46,595 WARNING django.request Forbidden: /capture/
+2026-08-14 23:09:49,027 WARNING django.request Conflict: /capture/start/
+2026-08-14 23:09:51,425 WARNING django.request Forbidden: /capture/start/
+2026-08-14 23:09:53,801 WARNING django.request Bad Request: /capture/start/
+2026-08-14 23:09:56,149 WARNING django.request Bad Request: /capture/stop/
+2026-08-14 23:10:14,535 WARNING core Rate limit exceeded for rate:12ca17b49af22894:/accounts/login/ (limit 10)
+2026-08-14 23:10:14,536 WARNING django.request Forbidden: /accounts/login/
+2026-08-14 23:10:14,537 WARNING core Rate limit exceeded for rate:12ca17b49af22894:/accounts/login/ (limit 10)
+2026-08-14 23:10:14,538 WARNING django.request Forbidden: /accounts/login/
+2026-08-14 23:10:31,765 WARNING django.request Not Found: /packets/99999/
+2026-08-14 23:10:44,532 WARNING django.request Forbidden: /sessions/1/delete/
+2026-08-14 23:10:47,609 WARNING sniffer.services Session 1 deleted by administrator (1 packets).
+2026-08-14 23:10:47,613 INFO sniffer.views Session 1 deleted by admin
+2026-08-14 23:10:50,162 WARNING django.request Not Found: /sessions/99999/
+2026-08-14 23:11:00,964 INFO sniffer.services Application settings updated by administrator.
+2026-08-14 23:11:06,190 WARNING django.request Forbidden: /settings/
+2026-08-14 23:28:17,780 INFO django.utils.autoreload Watching for file changes with StatReloader
