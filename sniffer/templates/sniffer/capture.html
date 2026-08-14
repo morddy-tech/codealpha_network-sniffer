@@ -25,6 +25,11 @@
       <div class="stat"><div class="k">Duration</div><div class="v" id="capture-timer" {% if running %}data-start="{{ running.started_at.isoformat }}"{% endif %}>00:00:00</div></div>
     </div>
     <div id="capture-error" class="alert error" style="display:none"></div>
+    <div id="capture-hint" class="alert info" style="display:none">
+      No packets received yet. Make sure the selected interface is the one actually
+      connected to a network (e.g. <strong>Wi-Fi</strong> or a wired adapter with an IP
+      address), and that the capture process runs with administrator privileges.
+    </div>
     <div class="actions">
       <button class="btn danger" id="capture-stop" {% if not running %}disabled{% endif %}>Stop Capture</button>
     </div>

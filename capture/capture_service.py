@@ -22,6 +22,7 @@ import logging
 import threading
 import time
 from dataclasses import dataclass, field
+from datetime import timedelta
 from typing import Any, Callable, Dict, Iterable, List, Optional, Tuple
 
 from django.conf import settings
@@ -31,6 +32,12 @@ from sniffer.constants import SessionStatus
 from sniffer.models import CaptureSession, DNSQuery, Packet, payload_preview_max_bytes
 
 logger = logging.getLogger("capture.service")
+
+# Error recorded on sessions whose worker died without finalizing them.
+STALE_SESSION_ERROR = (
+    "Capture process lost: the worker stopped responding and the session was "
+    "force-closed. Start a new capture to continue."
+)
 
 # BPF filter mapping for the ``--protocol`` CLI / web filter option.
 BPF_FILTERS: Dict[str, str] = {
@@ -191,7 +198,36 @@ class CaptureController:
         logger.info("Stop requested for session %d", session_id)
 
         # Reflect "stopping" in the DB immediately for observability.
-        CaptureSession.objects.filter(pk=session_id).update(status=SessionStatus.STOPPING)
+        CaptureSession.objects.filter(pk=session_id).update(
+            status=SessionStatus.STOPPING, last_heartbeat=timezone.now()
+        )
+
+        # Wait briefly for the worker to exit. If it is stuck (e.g. a native
+        # sniff call that never returns), force-close the session so the UI
+        # recovers instead of showing "stopping" forever.
+        thread = handle.thread
+        if thread is not None and thread.is_alive():
+            grace = max(int(getattr(settings, "CAPTURE_STOP_GRACE_SECONDS", 10)), 1)
+            thread.join(timeout=grace)
+            if thread.is_alive():
+                logger.warning(
+                    "Capture worker for session %d did not exit within %ds; "
+                    "force-closing session",
+                    session_id,
+                    grace,
+                )
+                with handle.lock:
+                    handle.status = SessionStatus.FAILED
+                    handle.error = STALE_SESSION_ERROR
+                    handle.ended_at = timezone.now()
+                CaptureSession.objects.filter(pk=session_id).update(
+                    status=SessionStatus.FAILED,
+                    error_message=STALE_SESSION_ERROR[:4000],
+                    ended_at=timezone.now(),
+                    last_heartbeat=timezone.now(),
+                )
+                with _REGISTRY_LOCK:
+                    _RUNNING.pop(session_id, None)
         return handle
 
     @classmethod
@@ -205,6 +241,19 @@ class CaptureController:
             session = CaptureSession.objects.get(pk=session_id)
         except CaptureSession.DoesNotExist:
             return {"session_id": session_id, "status": "unknown", "error": "Session not found."}
+
+        if session.is_running and cls._is_stale(session):
+            # The worker that owned this session is gone (no handle here and
+            # no recent heartbeat) - close it instead of reporting a capture
+            # that no longer exists.
+            session.mark_failed(STALE_SESSION_ERROR)
+            logger.warning(
+                "Session %d was stale (last heartbeat %s); marked failed",
+                session.id,
+                session.last_heartbeat,
+            )
+            session.refresh_from_db()
+
         return {
             "session_id": session.id,
             "interface": session.interface,
@@ -218,9 +267,48 @@ class CaptureController:
             "error": session.error_message,
         }
 
+    @staticmethod
+    def _stale_before() -> Any:
+        seconds = max(int(getattr(settings, "CAPTURE_STALE_AFTER_SECONDS", 15)), 5)
+        return timezone.now() - timedelta(seconds=seconds)
+
+    @classmethod
+    def _is_stale(cls, session: CaptureSession) -> bool:
+        if session.last_heartbeat is None:
+            return True
+        return session.last_heartbeat < cls._stale_before()
+
+    @classmethod
+    def reconcile_stale(cls) -> int:
+        """Close sessions whose worker died without finalizing them.
+
+        A session is stale when it is still marked running/stopping, has no
+        live in-process handle, and its worker has not reported a heartbeat
+        recently. Returns the number of sessions force-closed.
+        """
+        stale_before = cls._stale_before()
+        with _REGISTRY_LOCK:
+            live_ids = set(_RUNNING.keys())
+        stale = (
+            CaptureSession.objects.filter(
+                status__in=[SessionStatus.RUNNING, SessionStatus.STOPPING],
+            )
+            .exclude(id__in=live_ids)
+            .filter(last_heartbeat__lt=stale_before)
+        )
+        count = stale.update(
+            status=SessionStatus.FAILED,
+            error_message=STALE_SESSION_ERROR[:4000],
+            ended_at=timezone.now(),
+        )
+        if count:
+            logger.warning("Reconciled %d stale capture session(s)", count)
+        return count
+
     @classmethod
     def latest_status(cls) -> Dict[str, Any]:
         """Status of the most recent session (used by the top bar / capture page)."""
+        cls.reconcile_stale()
         latest = CaptureSession.objects.order_by("-started_at").first()
         if latest is None:
             return {
@@ -307,11 +395,22 @@ class CaptureController:
                 if sniff is None:
                     raise RuntimeError("Scapy is not installed; live capture is unavailable.")
 
+                def sniff_prn(packet):
+                    # Scapy prints any non-None prn return value, so swallow
+                    # handle_packet's boolean; stopping is done by stop_filter.
+                    handle_packet(packet)
+                    return None
+
                 sniff(
                     iface=interface,
-                    prn=handle_packet,
+                    prn=sniff_prn,
                     store=False,
-                    count=None if count == 0 else count,
+                    # 0 means unlimited. Never pass count=None: scapy's sniff
+                    # loop evaluates ``0 < count`` and raises "TypeError: '<'
+                    # not supported between instances of 'int' and 'NoneType'"
+                    # for the first packet of every capture slice, closing the
+                    # socket and dropping nearly all packets.
+                    count=count,
                     timeout=slice_timeout,
                     stop_filter=lambda _p: stop_event.is_set(),
                     filter=BPF_FILTERS.get(protocol_filter),
@@ -351,11 +450,14 @@ class CaptureController:
             while not stop_event.wait(interval):
                 try:
                     with handle.lock:
-                        if handle.packet_count == 0:
-                            continue
+                        packet_count = handle.packet_count
+                        byte_count = handle.byte_count
+                    # Always refresh the heartbeat, even with zero packets, so
+                    # the web process can tell a live worker from a dead one.
                     CaptureSession.objects.filter(pk=session_id).update(
-                        packet_count=handle.packet_count,
-                        total_bytes=handle.byte_count,
+                        packet_count=packet_count,
+                        total_bytes=byte_count,
+                        last_heartbeat=timezone.now(),
                     )
                 except Exception:  # noqa: BLE001 - DB may be unavailable
                     logger.exception("Stats persistence failed for session %d", session_id)
@@ -426,6 +528,7 @@ class CaptureController:
                 arp_count=counters["arp"],
                 ipv4_count=counters["ipv4"],
                 ipv6_count=counters["ipv6"],
+                last_heartbeat=timezone.now(),
             )
 
         try:
@@ -449,6 +552,7 @@ class CaptureController:
                 status=status,
                 ended_at=handle.ended_at,
                 error_message=error[:4000] if error else "",
+                last_heartbeat=timezone.now(),
             )
 
         try:
@@ -464,9 +568,17 @@ def _refresh_handle(handle: CaptureHandle, counters: Dict[str, int]) -> None:
 
 
 def _import_sniff():
-    """Import scapy's sniff lazily so Django works without Npcap installed."""
+    """Import scapy's sniff lazily so Django works without Npcap installed.
+
+    ``scapy.all`` must be imported (not just ``scapy.sendrecv``) so every
+    protocol layer and the datalink-type table are registered.  Without it
+    scapy falls back to a broken default dissector which logs "Unable to
+    guess datalink type", fails on individual sockets and can silently
+    report zero packets on some interfaces.
+    """
     try:
-        from scapy.sendrecv import sniff  # type: ignore[import-untyped]
+        import scapy.all  # noqa: F401 - registers all layers
+        from scapy.sendrecv import sniff
     except ImportError:
         return None
     return sniff

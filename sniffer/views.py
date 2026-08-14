@@ -110,6 +110,9 @@ def capture_page(request):
         )
     form = CaptureForm()
     status = services.application_settings()
+    from capture.capture_service import CaptureController
+
+    CaptureController.reconcile_stale()
     running = CaptureSession.objects.filter(status__in=["running", "stopping"]).first()
     return render(
         request,

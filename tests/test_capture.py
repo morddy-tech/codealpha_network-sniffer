@@ -11,9 +11,11 @@ worker thread cannot obtain.
 from __future__ import annotations
 
 import time
+from datetime import timedelta
 from unittest import mock
 
-from django.test import TransactionTestCase
+from django.test import TransactionTestCase, override_settings
+from django.utils import timezone
 
 from capture.capture_service import CaptureController
 from sniffer.constants import SessionStatus
@@ -124,8 +126,8 @@ class CaptureControllerTests(TransactionTestCase):
         session = self._session()
         handle = CaptureController.start(session, count=0, packet_source=self._source([tcp_packet()]))
         stopped = CaptureController.stop(session.id)
-        self.assertEqual(stopped.snapshot()["status"], SessionStatus.STOPPING)
-        self._run_and_wait(handle)
+        # stop() waits for the worker, so the snapshot reflects the final state.
+        self.assertEqual(stopped.snapshot()["status"], SessionStatus.COMPLETED)
         session.refresh_from_db()
         self.assertEqual(session.status, SessionStatus.COMPLETED)
 
@@ -157,6 +159,67 @@ class CaptureControllerTests(TransactionTestCase):
         snapshot = CaptureController.status(session.id)
         self.assertEqual(snapshot["session_id"], session.id)
         self.assertIn("status", snapshot)
+
+    def test_reconcile_stale_marks_dead_session_failed(self):
+        session = self._session()
+        CaptureSession.objects.filter(pk=session.id).update(
+            status=SessionStatus.RUNNING,
+            last_heartbeat=timezone.now() - timedelta(seconds=60),
+        )
+        count = CaptureController.reconcile_stale()
+        self.assertEqual(count, 1)
+        session.refresh_from_db()
+        self.assertEqual(session.status, SessionStatus.FAILED)
+        self.assertIn("worker", session.error_message.lower())
+        self.assertIsNotNone(session.ended_at)
+
+    def test_fresh_heartbeat_is_not_stale(self):
+        session = self._session()
+        self.assertEqual(CaptureController.reconcile_stale(), 0)
+        session.refresh_from_db()
+        self.assertEqual(session.status, SessionStatus.RUNNING)
+
+    def test_latest_status_recovers_from_stale_session(self):
+        session = self._session()
+        CaptureSession.objects.filter(pk=session.id).update(
+            status=SessionStatus.STOPPING,
+            last_heartbeat=timezone.now() - timedelta(seconds=60),
+        )
+        snapshot = CaptureController.latest_status()
+        self.assertEqual(snapshot["status"], SessionStatus.FAILED)
+        session.refresh_from_db()
+        self.assertEqual(session.status, SessionStatus.FAILED)
+
+    def test_status_fallback_marks_stale_session_failed(self):
+        session = self._session()
+        CaptureSession.objects.filter(pk=session.id).update(
+            status=SessionStatus.RUNNING,
+            last_heartbeat=timezone.now() - timedelta(seconds=60),
+        )
+        snapshot = CaptureController.status(session.id)
+        self.assertEqual(snapshot["status"], SessionStatus.FAILED)
+        session.refresh_from_db()
+        self.assertEqual(session.status, SessionStatus.FAILED)
+
+    @override_settings(CAPTURE_STOP_GRACE_SECONDS=1)
+    def test_stop_force_closes_stuck_worker(self):
+        from capture.capture_service import handle_for_session
+
+        def blocking_source():
+            while True:
+                time.sleep(60)
+                yield tcp_packet()
+
+        session = self._session()
+        handle = CaptureController.start(session, count=0, packet_source=blocking_source)
+        time.sleep(0.3)
+        self.assertTrue(handle.thread.is_alive())
+
+        stopped = CaptureController.stop(session.id)
+        session.refresh_from_db()
+        self.assertEqual(session.status, SessionStatus.FAILED)
+        self.assertIn("worker", stopped.error.lower())
+        self.assertIsNone(handle_for_session(session.id))
 
     def test_latest_status_idle(self):
         self.assertEqual(CaptureController.latest_status()["status"], "idle")

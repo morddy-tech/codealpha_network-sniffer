@@ -8,6 +8,9 @@ from .models import CaptureSession
 
 def capture_status(request):
     """Provide a global capture-status summary for the top navigation bar."""
+    from capture.capture_service import CaptureController
+
+    CaptureController.reconcile_stale()
     latest = CaptureSession.objects.order_by("-started_at").first()
     running = None
     if latest is not None and latest.is_running:

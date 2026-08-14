@@ -54,6 +54,9 @@ class CaptureSession(models.Model):
         default=False, help_text="Whether payload previews were stored for this session."
     )
     error_message = models.TextField(blank=True, default="")
+    # Written by the capture worker on a timer while the capture is alive.
+    # Used to detect sessions whose worker died without finalizing (stale).
+    last_heartbeat = models.DateTimeField(default=timezone.now, db_index=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
 

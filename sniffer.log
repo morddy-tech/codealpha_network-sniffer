@@ -366,3 +366,675 @@ RuntimeError: Scapy is not installed; live capture is unavailable.
 2026-08-13 22:54:52,696 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 200 1051
 2026-08-13 22:54:58,667 INFO django.server "POST /accounts/logout/ HTTP/1.1" 302 0
 2026-08-13 22:54:58,777 INFO django.server "GET / HTTP/1.1" 200 11685
+2026-08-14 21:44:02,816 INFO django.utils.autoreload Watching for file changes with StatReloader
+2026-08-14 21:44:22,890 INFO django.server "GET / HTTP/1.1" 200 11685
+2026-08-14 21:44:23,074 INFO django.server "GET /static/sniffer/css/sniffer.css HTTP/1.1" 200 4754
+2026-08-14 21:44:23,078 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 200 70011
+2026-08-14 21:44:23,130 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 200 754
+2026-08-14 21:44:23,160 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 200 1051
+2026-08-14 21:44:24,675 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-14 21:44:24,675 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-14 21:44:24,675 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-14 21:44:33,849 INFO django.server "GET /accounts/login/ HTTP/1.1" 200 6534
+2026-08-14 21:44:46,210 INFO django.server "POST /accounts/login/ HTTP/1.1" 302 0
+2026-08-14 21:44:46,349 INFO django.server "GET /dashboard/ HTTP/1.1" 200 11902
+2026-08-14 21:45:06,254 INFO django.server "GET /capture/ HTTP/1.1" 200 9542
+2026-08-14 21:45:06,502 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 200 1647
+2026-08-14 21:45:06,937 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:07,004 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 304 0
+2026-08-14 21:45:08,795 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:10,737 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:12,741 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:14,948 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:17,339 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:18,739 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:20,773 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:22,741 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:24,733 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:26,740 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:28,756 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:30,737 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:32,736 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:34,753 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:36,744 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:38,732 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:40,739 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:43,644 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:45,672 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:47,650 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:49,649 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:51,643 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:53,646 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:55,649 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:57,654 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:45:59,651 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:46:01,658 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:46:03,640 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:46:05,648 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:46:07,650 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:46:09,651 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:46:11,655 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:46:13,667 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:46:15,648 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:46:17,678 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:46:19,652 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:46:21,647 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:46:23,666 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:46:25,653 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:46:27,661 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:46:29,648 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:46:31,647 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:46:33,667 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:46:35,636 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:46:37,666 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:46:39,642 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:46:41,641 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 21:46:44,644 INFO django.server "GET /capture/status/ HTTP/1.1" 200 414
+2026-08-14 22:04:48,348 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:04:48,406 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:04:48,526 INFO capture.service Capture started: session=1 interface=test0 count=10 timeout=None
+2026-08-14 22:04:48,549 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:04:48,613 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:04:48,620 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:04:48,717 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:04:48,751 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:04:48,913 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:04:48,925 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:04:49,078 WARNING capture.service Reconciled 1 stale capture session(s)
+2026-08-14 22:04:49,116 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:04:49,121 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:04:49,225 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:04:49,231 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:04:49,317 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:04:49,380 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:04:49,450 WARNING capture.service Reconciled 1 stale capture session(s)
+2026-08-14 22:04:49,475 WARNING capture.service Session 1 was stale (last heartbeat 2026-08-14 21:03:49.473434+00:00); marked failed
+2026-08-14 22:04:49,526 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:04:49,828 INFO capture.service Stop requested for session 1
+2026-08-14 22:04:50,831 WARNING capture.service Capture worker for session 1 did not exit within 1s; force-closing session
+2026-08-14 22:04:50,853 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:04:50,854 INFO capture.service Stop requested for session 1
+2026-08-14 22:04:50,858 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:04:50,917 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:04:51,225 INFO capture.service Stop requested for session 1
+2026-08-14 22:04:51,272 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:04:51,321 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:04:51,323 ERROR capture.service Capture worker failed for session 1
+Traceback (most recent call last):
+  File "C:\Users\Eco Mike\Desktop\INTERNSHIP\Task 1\NETWORK SNIFFER\capture\capture_service.py", line 396, in _run
+    raise RuntimeError("Scapy is not installed; live capture is unavailable.")
+RuntimeError: Scapy is not installed; live capture is unavailable.
+2026-08-14 22:04:51,327 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:07:13,865 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:07:13,873 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:07:14,010 INFO capture.service Capture started: session=1 interface=test0 count=10 timeout=None
+2026-08-14 22:07:14,034 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:07:14,119 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:07:14,128 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:07:14,247 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:07:14,269 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:07:14,369 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:07:14,376 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:07:14,477 WARNING capture.service Reconciled 1 stale capture session(s)
+2026-08-14 22:07:14,506 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:07:14,515 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:07:14,586 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:07:14,592 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:07:14,663 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:07:14,668 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:07:14,735 WARNING capture.service Reconciled 1 stale capture session(s)
+2026-08-14 22:07:14,766 WARNING capture.service Session 1 was stale (last heartbeat 2026-08-14 21:06:14.764782+00:00); marked failed
+2026-08-14 22:07:14,813 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:07:15,114 INFO capture.service Stop requested for session 1
+2026-08-14 22:07:16,119 WARNING capture.service Capture worker for session 1 did not exit within 1s; force-closing session
+2026-08-14 22:07:16,157 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:07:16,158 INFO capture.service Stop requested for session 1
+2026-08-14 22:07:16,164 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:07:16,187 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:07:16,502 INFO capture.service Stop requested for session 1
+2026-08-14 22:07:16,531 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:07:16,586 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:07:16,588 ERROR capture.service Capture worker failed for session 1
+Traceback (most recent call last):
+  File "C:\Users\Eco Mike\Desktop\INTERNSHIP\Task 1\NETWORK SNIFFER\capture\capture_service.py", line 396, in _run
+    raise RuntimeError("Scapy is not installed; live capture is unavailable.")
+RuntimeError: Scapy is not installed; live capture is unavailable.
+2026-08-14 22:07:16,592 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:07:25,958 WARNING capture.service Reconciled 1 stale capture session(s)
+2026-08-14 22:09:22,590 WARNING django.request Not Found: /api/packets/99999/
+2026-08-14 22:09:33,266 WARNING django.request Unauthorized: /api/sessions/
+2026-08-14 22:09:33,267 WARNING django.request Unauthorized: /api/packets/
+2026-08-14 22:09:33,268 WARNING django.request Unauthorized: /api/statistics/
+2026-08-14 22:09:33,269 WARNING django.request Unauthorized: /api/dns/
+2026-08-14 22:09:33,270 WARNING django.request Unauthorized: /api/interfaces/
+2026-08-14 22:09:44,475 WARNING django.request Not Found: /reports/session/99999/html/
+2026-08-14 22:09:44,478 WARNING django.request Not Found: /reports/session/99999/csv/
+2026-08-14 22:09:44,482 WARNING django.request Not Found: /reports/session/99999/json/
+2026-08-14 22:09:57,444 WARNING django.request Forbidden: /capture/
+2026-08-14 22:09:59,702 WARNING django.request Conflict: /capture/start/
+2026-08-14 22:10:02,007 WARNING django.request Forbidden: /capture/start/
+2026-08-14 22:10:04,294 WARNING django.request Bad Request: /capture/start/
+2026-08-14 22:10:06,586 WARNING django.request Bad Request: /capture/stop/
+2026-08-14 22:10:26,357 WARNING core Rate limit exceeded for rate:12ca17b49af22894:/accounts/login/ (limit 10)
+2026-08-14 22:10:26,358 WARNING django.request Forbidden: /accounts/login/
+2026-08-14 22:10:26,359 WARNING core Rate limit exceeded for rate:12ca17b49af22894:/accounts/login/ (limit 10)
+2026-08-14 22:10:26,359 WARNING django.request Forbidden: /accounts/login/
+2026-08-14 22:10:40,886 WARNING django.request Not Found: /packets/99999/
+2026-08-14 22:10:52,913 WARNING django.request Forbidden: /sessions/1/delete/
+2026-08-14 22:10:55,207 WARNING sniffer.services Session 1 deleted by administrator (1 packets).
+2026-08-14 22:10:55,209 INFO sniffer.views Session 1 deleted by admin
+2026-08-14 22:10:57,473 WARNING django.request Not Found: /sessions/99999/
+2026-08-14 22:11:06,802 INFO sniffer.services Application settings updated by administrator.
+2026-08-14 22:11:11,497 WARNING django.request Forbidden: /settings/
+2026-08-14 22:11:11,501 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:11:11,515 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:11:11,622 INFO capture.service Capture started: session=1 interface=test0 count=10 timeout=None
+2026-08-14 22:11:11,637 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:11:11,697 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:11:11,702 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:11:11,781 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:11:11,792 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:11:11,904 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:11:11,909 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:11:12,027 WARNING capture.service Reconciled 1 stale capture session(s)
+2026-08-14 22:11:12,059 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:11:12,065 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:11:12,138 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:11:12,143 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:11:12,217 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:11:12,221 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:11:12,289 WARNING capture.service Reconciled 1 stale capture session(s)
+2026-08-14 22:11:12,312 WARNING capture.service Session 1 was stale (last heartbeat 2026-08-14 21:10:12.310679+00:00); marked failed
+2026-08-14 22:11:12,358 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:11:12,659 INFO capture.service Stop requested for session 1
+2026-08-14 22:11:13,668 WARNING capture.service Capture worker for session 1 did not exit within 1s; force-closing session
+2026-08-14 22:11:13,715 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:11:13,717 INFO capture.service Stop requested for session 1
+2026-08-14 22:11:13,721 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:11:13,745 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:11:14,062 INFO capture.service Stop requested for session 1
+2026-08-14 22:11:14,103 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:11:14,155 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:11:14,158 ERROR capture.service Capture worker failed for session 1
+Traceback (most recent call last):
+  File "C:\Users\Eco Mike\Desktop\INTERNSHIP\Task 1\NETWORK SNIFFER\capture\capture_service.py", line 396, in _run
+    raise RuntimeError("Scapy is not installed; live capture is unavailable.")
+RuntimeError: Scapy is not installed; live capture is unavailable.
+2026-08-14 22:11:14,161 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:12:08,659 INFO django.utils.autoreload Watching for file changes with StatReloader
+2026-08-14 22:12:21,334 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:12:22,746 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:12:24,753 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:12:26,744 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:12:28,741 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:12:30,739 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:12:32,743 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:12:34,751 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:12:36,738 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:12:38,791 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:12:38,929 INFO django.server "GET /capture/ HTTP/1.1" 200 9326
+2026-08-14 22:12:39,055 INFO django.server "GET /static/sniffer/css/sniffer.css HTTP/1.1" 304 0
+2026-08-14 22:12:39,057 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-14 22:12:39,062 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-14 22:12:39,065 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-14 22:12:39,069 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 304 0
+2026-08-14 22:12:39,147 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-14 22:12:39,149 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-14 22:12:39,161 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-14 22:12:39,168 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 304 0
+2026-08-14 22:12:39,671 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:12:41,649 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:12:43,653 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:12:45,669 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:12:47,662 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:12:49,664 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:12:51,644 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:12:53,649 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:12:55,663 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:12:57,640 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:12:59,648 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:01,660 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:03,654 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:05,647 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:07,645 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:09,653 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:11,644 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:13,643 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:15,646 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:17,654 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:19,658 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:21,654 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:23,648 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:25,644 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:27,650 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:29,653 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:31,648 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:33,648 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:35,643 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:37,651 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:39,658 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:41,653 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:43,658 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:45,656 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:47,651 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:49,658 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:51,652 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:53,655 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:55,656 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:57,653 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:13:59,650 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:14:01,649 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:14:03,647 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:14:05,642 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:14:07,647 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:14:09,646 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:14:11,656 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:14:13,648 INFO django.server "GET /capture/status/ HTTP/1.1" 200 560
+2026-08-14 22:14:14,743 INFO capture.service Capture started: session=6 interface=Ethernet 2 count=0 timeout=None
+2026-08-14 22:14:14,750 INFO sniffer.services Web capture started: session=6 by request
+2026-08-14 22:14:14,752 INFO sniffer.views Capture started by admin123 (session 6)
+2026-08-14 22:14:14,756 INFO django.server "POST /capture/start/ HTTP/1.1" 200 52
+2026-08-14 22:14:14,788 INFO django.server "GET /capture/status/ HTTP/1.1" 200 390
+2026-08-14 22:14:15,657 INFO django.server "GET /capture/status/ HTTP/1.1" 200 390
+2026-08-14 22:14:17,655 INFO django.server "GET /capture/status/ HTTP/1.1" 200 390
+2026-08-14 22:14:19,652 INFO django.server "GET /capture/status/ HTTP/1.1" 200 390
+2026-08-14 22:14:21,664 INFO django.server "GET /capture/status/ HTTP/1.1" 200 390
+2026-08-14 22:14:23,651 INFO django.server "GET /capture/status/ HTTP/1.1" 200 390
+2026-08-14 22:14:25,655 INFO django.server "GET /capture/status/ HTTP/1.1" 200 390
+2026-08-14 22:14:27,651 INFO django.server "GET /capture/status/ HTTP/1.1" 200 390
+2026-08-14 22:14:29,655 INFO django.server "GET /capture/status/ HTTP/1.1" 200 390
+2026-08-14 22:14:31,655 INFO django.server "GET /capture/status/ HTTP/1.1" 200 390
+2026-08-14 22:14:32,386 INFO capture.service Stop requested for session 6
+2026-08-14 22:14:33,659 INFO django.server "GET /capture/status/ HTTP/1.1" 200 391
+2026-08-14 22:14:34,831 INFO capture.service Capture worker exited for session 6
+2026-08-14 22:14:34,833 INFO sniffer.views Capture stop requested by admin123 (session 6)
+2026-08-14 22:14:34,836 INFO django.server "POST /capture/stop/ HTTP/1.1" 200 35
+2026-08-14 22:14:35,669 INFO django.server "GET /capture/status/ HTTP/1.1" 200 422
+2026-08-14 22:14:36,364 INFO django.server "GET /capture/status/ HTTP/1.1" 200 422
+2026-08-14 22:14:37,647 INFO django.server "GET /capture/status/ HTTP/1.1" 200 422
+2026-08-14 22:14:39,645 INFO django.server "GET /capture/status/ HTTP/1.1" 200 422
+2026-08-14 22:14:41,654 INFO django.server "GET /capture/status/ HTTP/1.1" 200 422
+2026-08-14 22:14:43,647 INFO django.server "GET /capture/status/ HTTP/1.1" 200 422
+2026-08-14 22:14:44,200 INFO capture.service Capture started: session=7 interface=Local Area Connection* 10 count=0 timeout=None
+2026-08-14 22:14:44,203 INFO sniffer.services Web capture started: session=7 by request
+2026-08-14 22:14:44,205 INFO sniffer.views Capture started by admin123 (session 7)
+2026-08-14 22:14:44,207 INFO django.server "POST /capture/start/ HTTP/1.1" 200 52
+2026-08-14 22:14:44,238 INFO django.server "GET /capture/status/ HTTP/1.1" 200 405
+2026-08-14 22:14:45,652 INFO django.server "GET /capture/status/ HTTP/1.1" 200 405
+2026-08-14 22:14:47,650 INFO django.server "GET /capture/status/ HTTP/1.1" 200 405
+2026-08-14 22:14:49,650 INFO django.server "GET /capture/status/ HTTP/1.1" 200 405
+2026-08-14 22:14:51,654 INFO django.server "GET /capture/status/ HTTP/1.1" 200 405
+2026-08-14 22:14:53,653 INFO django.server "GET /capture/status/ HTTP/1.1" 200 405
+2026-08-14 22:14:55,651 INFO django.server "GET /capture/status/ HTTP/1.1" 200 405
+2026-08-14 22:14:57,656 INFO django.server "GET /capture/status/ HTTP/1.1" 200 405
+2026-08-14 22:14:59,659 INFO django.server "GET /capture/status/ HTTP/1.1" 200 405
+2026-08-14 22:15:00,516 INFO capture.service Stop requested for session 7
+2026-08-14 22:15:01,655 INFO django.server "GET /capture/status/ HTTP/1.1" 200 406
+2026-08-14 22:15:03,643 INFO django.server "GET /capture/status/ HTTP/1.1" 200 406
+2026-08-14 22:15:04,261 INFO capture.service Capture worker exited for session 7
+2026-08-14 22:15:04,262 INFO sniffer.views Capture stop requested by admin123 (session 7)
+2026-08-14 22:15:04,263 INFO django.server "POST /capture/stop/ HTTP/1.1" 200 35
+2026-08-14 22:15:05,667 INFO django.server "GET /capture/status/ HTTP/1.1" 200 437
+2026-08-14 22:15:05,797 INFO django.server "GET /capture/status/ HTTP/1.1" 200 437
+2026-08-14 22:15:07,647 INFO django.server "GET /capture/status/ HTTP/1.1" 200 437
+2026-08-14 22:15:08,651 INFO django.server "GET /capture/ HTTP/1.1" 200 9326
+2026-08-14 22:15:08,779 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-14 22:15:08,785 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-14 22:15:08,789 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-14 22:15:08,794 INFO django.server "GET /static/sniffer/css/sniffer.css HTTP/1.1" 304 0
+2026-08-14 22:15:08,799 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 304 0
+2026-08-14 22:15:09,276 INFO django.server "GET /capture/status/ HTTP/1.1" 200 437
+2026-08-14 22:15:09,724 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-14 22:15:09,724 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-14 22:15:09,724 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-14 22:15:09,727 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 304 0
+2026-08-14 22:15:11,001 INFO django.server "GET /capture/status/ HTTP/1.1" 200 437
+2026-08-14 22:15:13,010 INFO django.server "GET /capture/status/ HTTP/1.1" 200 437
+2026-08-14 22:15:15,003 INFO django.server "GET /capture/status/ HTTP/1.1" 200 437
+2026-08-14 22:15:17,012 INFO django.server "GET /capture/status/ HTTP/1.1" 200 437
+2026-08-14 22:15:19,054 INFO django.server "GET /capture/status/ HTTP/1.1" 200 437
+2026-08-14 22:15:19,160 INFO django.server "GET /sessions/ HTTP/1.1" 200 9949
+2026-08-14 22:15:27,916 WARNING sniffer.services Session 5 deleted by administrator (0 packets).
+2026-08-14 22:15:28,122 INFO sniffer.views Session 5 deleted by admin123
+2026-08-14 22:15:28,127 INFO django.server "POST /sessions/5/delete/ HTTP/1.1" 302 0
+2026-08-14 22:15:28,174 INFO django.server "GET /sessions/ HTTP/1.1" 200 8940
+2026-08-14 22:15:31,687 WARNING sniffer.services Session 7 deleted by administrator (0 packets).
+2026-08-14 22:15:31,704 INFO sniffer.views Session 7 deleted by admin123
+2026-08-14 22:15:31,711 INFO django.server "POST /sessions/7/delete/ HTTP/1.1" 302 0
+2026-08-14 22:15:31,777 INFO django.server "GET /sessions/ HTTP/1.1" 200 7895
+2026-08-14 22:15:33,175 INFO django.server "GET /sessions/6/ HTTP/1.1" 200 13387
+2026-08-14 22:15:48,348 WARNING sniffer.services Session 6 deleted by administrator (0 packets).
+2026-08-14 22:15:48,360 INFO sniffer.views Session 6 deleted by admin123
+2026-08-14 22:15:48,364 INFO django.server "POST /sessions/6/delete/ HTTP/1.1" 302 0
+2026-08-14 22:15:48,407 INFO django.server "GET /sessions/ HTTP/1.1" 200 7134
+2026-08-14 22:15:53,274 INFO django.server "GET /sessions/ HTTP/1.1" 200 7029
+2026-08-14 22:15:54,872 INFO django.server "GET /packets/ HTTP/1.1" 200 8295
+2026-08-14 22:15:56,947 INFO django.server "GET /packets/ HTTP/1.1" 200 8295
+2026-08-14 22:15:58,084 INFO django.server "GET /analytics/ HTTP/1.1" 200 8569
+2026-08-14 22:16:01,197 INFO django.server "GET /analytics/dns/ HTTP/1.1" 200 8158
+2026-08-14 22:16:07,021 INFO django.server "GET /analytics/ HTTP/1.1" 200 8569
+2026-08-14 22:16:08,044 INFO django.server "GET /analytics/dns/ HTTP/1.1" 200 8158
+2026-08-14 22:16:08,171 INFO django.server "GET /static/sniffer/css/sniffer.css HTTP/1.1" 304 0
+2026-08-14 22:16:08,173 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-14 22:16:08,175 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-14 22:16:08,195 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-14 22:16:10,178 INFO django.server "GET /interfaces/ HTTP/1.1" 200 49577
+2026-08-14 22:16:11,673 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-14 22:16:11,673 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-14 22:16:11,673 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-14 22:16:14,010 INFO capture.interfaces Interface refresh: 0 added, 10 updated
+2026-08-14 22:16:14,011 INFO sniffer.views Interface table refreshed by admin123
+2026-08-14 22:16:14,055 INFO django.server "GET /interfaces/?refresh=1 HTTP/1.1" 200 49707
+2026-08-14 22:16:43,751 INFO django.server "GET /settings/ HTTP/1.1" 200 7869
+2026-08-14 22:16:53,680 INFO django.server "GET /sessions/ HTTP/1.1" 200 7029
+2026-08-14 22:16:57,721 INFO django.server "GET /capture/ HTTP/1.1" 200 9326
+2026-08-14 22:16:57,820 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 304 0
+2026-08-14 22:16:58,006 INFO django.server "GET /capture/status/ HTTP/1.1" 200 236
+2026-08-14 22:16:59,494 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 304 0
+2026-08-14 22:17:00,004 INFO django.server "GET /capture/status/ HTTP/1.1" 200 236
+2026-08-14 22:17:02,003 INFO django.server "GET /capture/status/ HTTP/1.1" 200 236
+2026-08-14 22:17:03,997 INFO django.server "GET /capture/status/ HTTP/1.1" 200 236
+2026-08-14 22:17:05,997 INFO django.server "GET /capture/status/ HTTP/1.1" 200 236
+2026-08-14 22:17:07,999 INFO django.server "GET /capture/status/ HTTP/1.1" 200 236
+2026-08-14 22:17:10,001 INFO django.server "GET /capture/status/ HTTP/1.1" 200 236
+2026-08-14 22:17:10,712 INFO capture.service Capture started: session=8 interface=Ethernet count=0 timeout=None
+2026-08-14 22:17:10,715 INFO sniffer.services Web capture started: session=8 by request
+2026-08-14 22:17:10,716 INFO sniffer.views Capture started by admin123 (session 8)
+2026-08-14 22:17:10,718 INFO django.server "POST /capture/start/ HTTP/1.1" 200 52
+2026-08-14 22:17:10,740 INFO django.server "GET /capture/status/ HTTP/1.1" 200 388
+2026-08-14 22:17:11,995 INFO django.server "GET /capture/status/ HTTP/1.1" 200 388
+2026-08-14 22:17:13,997 INFO django.server "GET /capture/status/ HTTP/1.1" 200 388
+2026-08-14 22:17:15,999 INFO django.server "GET /capture/status/ HTTP/1.1" 200 388
+2026-08-14 22:17:18,003 INFO django.server "GET /capture/status/ HTTP/1.1" 200 388
+2026-08-14 22:17:20,006 INFO django.server "GET /capture/status/ HTTP/1.1" 200 388
+2026-08-14 22:17:22,685 INFO django.server "GET /capture/status/ HTTP/1.1" 200 388
+2026-08-14 22:17:24,653 INFO django.server "GET /capture/status/ HTTP/1.1" 200 388
+2026-08-14 22:17:26,055 INFO django.server "GET /capture/status/ HTTP/1.1" 200 388
+2026-08-14 22:17:28,003 INFO django.server "GET /capture/status/ HTTP/1.1" 200 388
+2026-08-14 22:17:30,003 INFO django.server "GET /capture/status/ HTTP/1.1" 200 388
+2026-08-14 22:17:32,006 INFO django.server "GET /capture/status/ HTTP/1.1" 200 388
+2026-08-14 22:17:34,006 INFO django.server "GET /capture/status/ HTTP/1.1" 200 388
+2026-08-14 22:17:36,002 INFO django.server "GET /capture/status/ HTTP/1.1" 200 388
+2026-08-14 22:17:38,000 INFO django.server "GET /capture/status/ HTTP/1.1" 200 388
+2026-08-14 22:17:40,004 INFO django.server "GET /capture/status/ HTTP/1.1" 200 388
+2026-08-14 22:17:42,042 INFO django.server "GET /analytics/ HTTP/1.1" 200 8636
+2026-08-14 22:17:42,046 INFO django.server "GET /capture/status/ HTTP/1.1" 200 388
+2026-08-14 22:17:42,190 INFO django.server "GET /static/sniffer/css/sniffer.css HTTP/1.1" 304 0
+2026-08-14 22:17:42,223 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-14 22:17:42,224 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-14 22:17:42,244 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-14 22:17:43,309 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-14 22:17:43,310 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-14 22:17:43,310 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-14 22:17:45,278 INFO django.server "GET /interfaces/ HTTP/1.1" 200 49658
+2026-08-14 22:18:01,747 INFO django.server "GET /capture/ HTTP/1.1" 200 9437
+2026-08-14 22:18:01,921 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 304 0
+2026-08-14 22:18:02,195 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 304 0
+2026-08-14 22:18:02,983 INFO django.server "GET /capture/status/ HTTP/1.1" 200 388
+2026-08-14 22:18:04,086 INFO django.server "GET /capture/status/ HTTP/1.1" 200 388
+2026-08-14 22:18:06,119 INFO django.server "GET /capture/status/ HTTP/1.1" 200 388
+2026-08-14 22:18:07,565 INFO capture.service Stop requested for session 8
+2026-08-14 22:18:08,089 INFO django.server "GET /capture/status/ HTTP/1.1" 200 389
+2026-08-14 22:18:10,086 INFO django.server "GET /capture/status/ HTTP/1.1" 200 389
+2026-08-14 22:18:11,427 INFO capture.service Capture worker exited for session 8
+2026-08-14 22:18:11,429 INFO sniffer.views Capture stop requested by admin123 (session 8)
+2026-08-14 22:18:11,431 INFO django.server "POST /capture/stop/ HTTP/1.1" 200 35
+2026-08-14 22:18:12,089 INFO django.server "GET /capture/status/ HTTP/1.1" 200 420
+2026-08-14 22:18:12,955 INFO django.server "GET /capture/status/ HTTP/1.1" 200 420
+2026-08-14 22:18:14,084 INFO django.server "GET /capture/status/ HTTP/1.1" 200 420
+2026-08-14 22:18:16,086 INFO django.server "GET /capture/status/ HTTP/1.1" 200 420
+2026-08-14 22:18:17,582 INFO django.server "GET /packets/ HTTP/1.1" 200 8330
+2026-08-14 22:18:21,004 INFO django.server "GET /capture/ HTTP/1.1" 200 9326
+2026-08-14 22:18:21,376 INFO django.server "GET /capture/status/ HTTP/1.1" 200 420
+2026-08-14 22:18:22,903 INFO django.server "GET /sessions/ HTTP/1.1" 200 7788
+2026-08-14 22:18:28,586 INFO django.server "GET /sessions/8/ HTTP/1.1" 200 13383
+2026-08-14 22:19:07,019 INFO django.server "GET /interfaces/ HTTP/1.1" 200 49591
+2026-08-14 22:19:07,160 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-14 22:19:07,265 INFO django.server "GET /static/sniffer/css/sniffer.css HTTP/1.1" 304 0
+2026-08-14 22:19:07,269 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-14 22:19:07,269 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-14 22:19:08,991 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-14 22:19:09,001 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-14 22:19:09,002 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-14 22:19:15,257 INFO capture.interfaces Interface refresh: 0 added, 10 updated
+2026-08-14 22:19:15,259 INFO sniffer.views Interface table refreshed by admin123
+2026-08-14 22:19:15,283 INFO django.server "GET /interfaces/?refresh=1 HTTP/1.1" 200 49707
+2026-08-14 22:20:18,732 INFO capture.interfaces Interface refresh: 0 added, 10 updated
+2026-08-14 22:21:18,341 INFO capture.service Capture started: session=9 interface=Wi-Fi count=0 timeout=None
+2026-08-14 22:21:18,402 INFO sniffer.services Web capture started: session=9 by request
+2026-08-14 22:21:26,405 INFO capture.service Stop requested for session 9
+2026-08-14 22:21:27,481 INFO capture.service Capture worker exited for session 9
+2026-08-14 22:24:30,367 INFO capture.service Capture started: session=10 interface=Wi-Fi count=0 timeout=None
+2026-08-14 22:24:30,369 INFO sniffer.services Web capture started: session=10 by request
+2026-08-14 22:24:36,371 INFO capture.service Stop requested for session 10
+2026-08-14 22:24:38,180 INFO capture.service Capture worker exited for session 10
+2026-08-14 22:25:44,537 INFO capture.service Capture started: session=11 interface=Wi-Fi count=0 timeout=None
+2026-08-14 22:25:44,540 INFO sniffer.services Web capture started: session=11 by request
+2026-08-14 22:25:54,541 INFO capture.service Stop requested for session 11
+2026-08-14 22:25:55,779 INFO capture.service Capture worker exited for session 11
+2026-08-14 22:26:12,115 INFO capture.service Capture started: session=12 interface=Wi-Fi count=0 timeout=None
+2026-08-14 22:26:12,116 INFO sniffer.services Web capture started: session=12 by request
+2026-08-14 22:26:22,245 INFO capture.service Stop requested for session 12
+2026-08-14 22:26:26,930 INFO capture.service Capture worker exited for session 12
+2026-08-14 22:27:03,294 INFO capture.service Capture started: session=13 interface=Wi-Fi count=0 timeout=None
+2026-08-14 22:27:03,296 INFO sniffer.services Web capture started: session=13 by request
+2026-08-14 22:27:13,297 INFO capture.service Stop requested for session 13
+2026-08-14 22:27:14,208 INFO capture.service Capture worker exited for session 13
+2026-08-14 22:27:50,412 INFO capture.service Capture started: session=14 interface=Wi-Fi count=0 timeout=None
+2026-08-14 22:27:50,413 INFO sniffer.services Web capture started: session=14 by request
+2026-08-14 22:28:02,416 INFO capture.service Stop requested for session 14
+2026-08-14 22:28:03,446 INFO capture.service Capture worker exited for session 14
+2026-08-14 22:29:28,686 INFO capture.service Capture started: session=15 interface=Wi-Fi count=0 timeout=None
+2026-08-14 22:29:28,688 INFO sniffer.services Web capture started: session=15 by request
+2026-08-14 22:29:34,691 INFO capture.service Stop requested for session 15
+2026-08-14 22:29:35,476 INFO capture.service Capture worker exited for session 15
+2026-08-14 22:30:04,619 INFO capture.service Capture started: session=16 interface=Wi-Fi count=0 timeout=None
+2026-08-14 22:30:04,625 INFO sniffer.services Web capture started: session=16 by request
+2026-08-14 22:30:09,635 INFO capture.service Stop requested for session 16
+2026-08-14 22:30:13,239 INFO capture.service Capture worker exited for session 16
+2026-08-14 22:30:47,559 INFO capture.service Capture started: session=17 interface=Wi-Fi count=0 timeout=None
+2026-08-14 22:30:47,562 INFO sniffer.services Web capture started: session=17 by request
+2026-08-14 22:30:53,567 INFO capture.service Stop requested for session 17
+2026-08-14 22:30:55,350 INFO capture.service Capture worker exited for session 17
+2026-08-14 22:32:05,490 INFO capture.service Capture started: session=18 interface=Wi-Fi count=0 timeout=None
+2026-08-14 22:32:05,495 INFO sniffer.services Web capture started: session=18 by request
+2026-08-14 22:32:17,507 INFO capture.service Stop requested for session 18
+2026-08-14 22:32:18,876 INFO capture.service Capture worker exited for session 18
+2026-08-14 22:32:38,927 INFO capture.service Capture started: session=19 interface=Wi-Fi count=0 timeout=None
+2026-08-14 22:32:38,929 INFO sniffer.services Web capture started: session=19 by request
+2026-08-14 22:32:50,932 INFO capture.service Stop requested for session 19
+2026-08-14 22:32:52,076 INFO capture.service Capture worker exited for session 19
+2026-08-14 22:33:26,171 INFO capture.service Capture started: session=20 interface=Wi-Fi count=0 timeout=None
+2026-08-14 22:33:26,173 INFO sniffer.services Web capture started: session=20 by request
+2026-08-14 22:33:38,175 INFO capture.service Stop requested for session 20
+2026-08-14 22:33:39,113 INFO capture.service Capture worker exited for session 20
+2026-08-14 22:38:27,699 INFO capture.service Capture started: session=21 interface=Wi-Fi count=0 timeout=None
+2026-08-14 22:38:27,701 INFO sniffer.services Web capture started: session=21 by request
+2026-08-14 22:38:40,707 INFO capture.service Stop requested for session 21
+2026-08-14 22:39:19,227 INFO capture.service Capture started: session=22 interface=Wi-Fi count=0 timeout=None
+2026-08-14 22:39:19,228 INFO sniffer.services Web capture started: session=22 by request
+2026-08-14 22:39:32,231 INFO capture.service Stop requested for session 22
+2026-08-14 22:39:34,669 INFO capture.service Capture worker exited for session 22
+2026-08-14 22:40:01,325 INFO capture.service Capture started: session=23 interface=Wi-Fi count=0 timeout=None
+2026-08-14 22:40:01,329 INFO sniffer.services Web capture started: session=23 by request
+2026-08-14 22:40:08,330 INFO capture.service Stop requested for session 23
+2026-08-14 22:40:09,405 INFO capture.service Capture worker exited for session 23
+2026-08-14 22:40:09,823 INFO capture.service Capture started: session=24 interface=Wi-Fi count=0 timeout=None
+2026-08-14 22:40:09,824 INFO sniffer.services Web capture started: session=24 by request
+2026-08-14 22:40:16,827 INFO capture.service Stop requested for session 24
+2026-08-14 22:40:18,307 INFO capture.service Capture worker exited for session 24
+2026-08-14 22:40:18,970 INFO capture.service Capture started: session=25 interface=Wi-Fi count=0 timeout=None
+2026-08-14 22:40:18,977 INFO sniffer.services Web capture started: session=25 by request
+2026-08-14 22:40:25,978 INFO capture.service Stop requested for session 25
+2026-08-14 22:40:27,547 INFO capture.service Capture worker exited for session 25
+2026-08-14 22:40:28,043 INFO capture.service Capture started: session=26 interface=Wi-Fi count=0 timeout=None
+2026-08-14 22:40:28,051 INFO sniffer.services Web capture started: session=26 by request
+2026-08-14 22:40:35,052 INFO capture.service Stop requested for session 26
+2026-08-14 22:40:35,983 INFO capture.service Capture worker exited for session 26
+2026-08-14 22:41:33,464 INFO capture.service Capture started: session=27 interface=Wi-Fi count=0 timeout=None
+2026-08-14 22:41:33,467 INFO sniffer.services Web capture started: session=27 by request
+2026-08-14 22:41:45,470 INFO capture.service Stop requested for session 27
+2026-08-14 22:41:45,915 INFO capture.service Capture worker exited for session 27
+2026-08-14 22:43:01,812 WARNING django.request Not Found: /api/packets/99999/
+2026-08-14 22:43:15,559 WARNING django.request Unauthorized: /api/sessions/
+2026-08-14 22:43:15,561 WARNING django.request Unauthorized: /api/packets/
+2026-08-14 22:43:15,563 WARNING django.request Unauthorized: /api/statistics/
+2026-08-14 22:43:15,564 WARNING django.request Unauthorized: /api/dns/
+2026-08-14 22:43:15,566 WARNING django.request Unauthorized: /api/interfaces/
+2026-08-14 22:43:29,667 WARNING django.request Not Found: /reports/session/99999/html/
+2026-08-14 22:43:29,672 WARNING django.request Not Found: /reports/session/99999/csv/
+2026-08-14 22:43:29,681 WARNING django.request Not Found: /reports/session/99999/json/
+2026-08-14 22:43:45,766 WARNING django.request Forbidden: /capture/
+2026-08-14 22:43:48,533 WARNING django.request Conflict: /capture/start/
+2026-08-14 22:43:51,295 WARNING django.request Forbidden: /capture/start/
+2026-08-14 22:43:53,824 WARNING django.request Bad Request: /capture/start/
+2026-08-14 22:43:56,397 WARNING django.request Bad Request: /capture/stop/
+2026-08-14 22:44:18,160 WARNING core Rate limit exceeded for rate:12ca17b49af22894:/accounts/login/ (limit 10)
+2026-08-14 22:44:18,160 WARNING django.request Forbidden: /accounts/login/
+2026-08-14 22:44:18,162 WARNING core Rate limit exceeded for rate:12ca17b49af22894:/accounts/login/ (limit 10)
+2026-08-14 22:44:18,162 WARNING django.request Forbidden: /accounts/login/
+2026-08-14 22:44:33,902 WARNING django.request Not Found: /packets/99999/
+2026-08-14 22:44:48,545 WARNING django.request Forbidden: /sessions/1/delete/
+2026-08-14 22:44:51,222 WARNING sniffer.services Session 1 deleted by administrator (1 packets).
+2026-08-14 22:44:51,224 INFO sniffer.views Session 1 deleted by admin
+2026-08-14 22:44:53,881 WARNING django.request Not Found: /sessions/99999/
+2026-08-14 22:45:03,421 INFO sniffer.services Application settings updated by administrator.
+2026-08-14 22:45:08,484 WARNING django.request Forbidden: /settings/
+2026-08-14 22:45:08,491 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:45:08,512 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:45:08,664 INFO capture.service Capture started: session=1 interface=test0 count=10 timeout=None
+2026-08-14 22:45:08,683 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:45:08,744 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:45:08,751 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:45:08,830 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:45:08,840 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:45:08,967 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:45:08,973 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:45:09,064 WARNING capture.service Reconciled 1 stale capture session(s)
+2026-08-14 22:45:09,092 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:45:09,097 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:45:09,188 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:45:09,194 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:45:09,266 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:45:09,270 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:45:09,347 WARNING capture.service Reconciled 1 stale capture session(s)
+2026-08-14 22:45:09,378 WARNING capture.service Session 1 was stale (last heartbeat 2026-08-14 21:44:09.376405+00:00); marked failed
+2026-08-14 22:45:09,427 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:45:09,728 INFO capture.service Stop requested for session 1
+2026-08-14 22:45:10,745 WARNING capture.service Capture worker for session 1 did not exit within 1s; force-closing session
+2026-08-14 22:45:10,784 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:45:10,785 INFO capture.service Stop requested for session 1
+2026-08-14 22:45:10,790 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:45:10,811 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:45:11,126 INFO capture.service Stop requested for session 1
+2026-08-14 22:45:11,176 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:45:11,243 INFO capture.service Capture started: session=1 interface=test0 count=0 timeout=None
+2026-08-14 22:45:11,245 ERROR capture.service Capture worker failed for session 1
+Traceback (most recent call last):
+  File "C:\Users\Eco Mike\Desktop\INTERNSHIP\Task 1\NETWORK SNIFFER\capture\capture_service.py", line 396, in _run
+    raise RuntimeError("Scapy is not installed; live capture is unavailable.")
+RuntimeError: Scapy is not installed; live capture is unavailable.
+2026-08-14 22:45:11,249 INFO capture.service Capture worker exited for session 1
+2026-08-14 22:45:22,833 INFO capture.service Capture started: session=28 interface=Wi-Fi count=0 timeout=None
+2026-08-14 22:45:22,838 INFO sniffer.services Web capture started: session=28 by request
+2026-08-14 22:45:28,840 INFO capture.service Stop requested for session 28
+2026-08-14 22:45:30,169 INFO capture.service Capture worker exited for session 28
+2026-08-14 22:55:24,049 INFO django.utils.autoreload Watching for file changes with StatReloader
+2026-08-14 22:55:34,878 INFO django.server "POST /accounts/logout/ HTTP/1.1" 302 0
+2026-08-14 22:55:34,935 INFO django.server "GET / HTTP/1.1" 200 11599
+2026-08-14 22:55:35,226 INFO django.server "GET /static/sniffer/css/sniffer.css HTTP/1.1" 304 0
+2026-08-14 22:55:35,229 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-14 22:55:35,241 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-14 22:55:35,253 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-14 22:55:35,422 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-14 22:55:35,429 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-14 22:55:38,562 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-14 22:55:40,982 INFO django.server "POST /accounts/logout/ HTTP/1.1" 302 0
+2026-08-14 22:55:41,026 INFO django.server "GET / HTTP/1.1" 200 11599
+2026-08-14 22:55:44,772 INFO django.server "GET /capture/ HTTP/1.1" 302 0
+2026-08-14 22:55:44,808 INFO django.server "GET /accounts/login/?next=/capture/ HTTP/1.1" 200 6457
+2026-08-14 22:55:54,864 INFO django.server "POST /accounts/login/ HTTP/1.1" 302 0
+2026-08-14 22:55:59,004 INFO django.server "GET /capture/ HTTP/1.1" 200 10122
+2026-08-14 22:55:59,216 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 304 0
+2026-08-14 22:55:59,368 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 304 0
+2026-08-14 22:55:59,711 INFO django.server "GET /capture/status/ HTTP/1.1" 200 420
+2026-08-14 22:56:01,687 INFO django.server "GET /capture/status/ HTTP/1.1" 200 420
+2026-08-14 22:56:03,661 INFO django.server "GET /capture/status/ HTTP/1.1" 200 420
+2026-08-14 22:56:05,685 INFO django.server "GET /capture/status/ HTTP/1.1" 200 420
+2026-08-14 22:56:07,700 INFO django.server "GET /capture/status/ HTTP/1.1" 200 420
+2026-08-14 22:56:09,690 INFO django.server "GET /capture/status/ HTTP/1.1" 200 420
+2026-08-14 22:56:11,662 INFO django.server "GET /capture/status/ HTTP/1.1" 200 420
+2026-08-14 22:56:13,663 INFO django.server "GET /capture/status/ HTTP/1.1" 200 420
+2026-08-14 22:56:15,689 INFO django.server "GET /capture/status/ HTTP/1.1" 200 420
+2026-08-14 22:56:17,663 INFO django.server "GET /capture/status/ HTTP/1.1" 200 420
+2026-08-14 22:56:19,686 INFO django.server "GET /capture/status/ HTTP/1.1" 200 420
+2026-08-14 22:56:21,663 INFO django.server "GET /capture/status/ HTTP/1.1" 200 420
+2026-08-14 22:56:23,661 INFO django.server "GET /capture/status/ HTTP/1.1" 200 420
+2026-08-14 22:56:25,657 INFO django.server "GET /capture/status/ HTTP/1.1" 200 420
+2026-08-14 22:56:26,311 INFO capture.service Capture started: session=29 interface=Wi-Fi count=0 timeout=None
+2026-08-14 22:56:26,313 INFO sniffer.services Web capture started: session=29 by request
+2026-08-14 22:56:26,314 INFO sniffer.views Capture started by admin123 (session 29)
+2026-08-14 22:56:26,317 INFO django.server "POST /capture/start/ HTTP/1.1" 200 54
+2026-08-14 22:56:26,340 INFO django.server "GET /capture/status/ HTTP/1.1" 200 386
+2026-08-14 22:56:27,661 INFO django.server "GET /capture/status/ HTTP/1.1" 200 390
+2026-08-14 22:56:29,672 INFO django.server "GET /capture/status/ HTTP/1.1" 200 391
+2026-08-14 22:56:31,671 INFO django.server "GET /capture/status/ HTTP/1.1" 200 391
+2026-08-14 22:56:33,664 INFO django.server "GET /capture/status/ HTTP/1.1" 200 391
+2026-08-14 22:56:34,757 INFO django.server "GET /sessions/ HTTP/1.1" 200 8881
+2026-08-14 22:56:43,810 WARNING sniffer.services Session 8 deleted by administrator (0 packets).
+2026-08-14 22:56:44,024 INFO sniffer.views Session 8 deleted by admin123
+2026-08-14 22:56:44,026 INFO django.server "POST /sessions/8/delete/ HTTP/1.1" 302 0
+2026-08-14 22:56:44,058 INFO django.server "GET /sessions/ HTTP/1.1" 200 7959
+2026-08-14 22:56:44,189 INFO django.server "GET /static/sniffer/css/sniffer.css HTTP/1.1" 304 0
+2026-08-14 22:56:44,204 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-14 22:56:44,209 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-14 22:56:44,212 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-14 22:56:44,577 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-14 22:56:44,577 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-14 22:56:44,586 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-14 22:56:47,269 INFO django.server "GET /sessions/29/ HTTP/1.1" 200 13435
+2026-08-14 22:57:31,875 INFO django.server "GET /capture/ HTTP/1.1" 200 10231
+2026-08-14 22:57:32,014 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 304 0
+2026-08-14 22:57:32,312 INFO django.server "GET /capture/status/ HTTP/1.1" 200 395
+2026-08-14 22:57:34,383 INFO django.server "GET /static/sniffer/js/capture.js HTTP/1.1" 304 0
+2026-08-14 22:57:34,408 INFO django.server "GET /capture/status/ HTTP/1.1" 200 395
+2026-08-14 22:57:36,327 INFO django.server "GET /capture/status/ HTTP/1.1" 200 395
+2026-08-14 22:57:38,278 INFO django.server "GET /capture/status/ HTTP/1.1" 200 395
+2026-08-14 22:57:39,665 INFO capture.service Stop requested for session 29
+2026-08-14 22:57:40,731 INFO capture.service Capture worker exited for session 29
+2026-08-14 22:57:40,733 INFO sniffer.views Capture stop requested by admin123 (session 29)
+2026-08-14 22:57:40,734 INFO django.server "POST /capture/stop/ HTTP/1.1" 200 35
+2026-08-14 22:57:40,788 INFO django.server "GET /capture/status/ HTTP/1.1" 200 427
+2026-08-14 22:57:42,211 INFO django.server "GET /capture/status/ HTTP/1.1" 200 427
+2026-08-14 22:57:42,276 INFO django.server "GET /capture/status/ HTTP/1.1" 200 427
+2026-08-14 22:57:44,204 INFO django.server "GET /capture/status/ HTTP/1.1" 200 427
+2026-08-14 22:57:45,359 INFO django.server "GET /sessions/ HTTP/1.1" 200 7792
+2026-08-14 22:57:45,512 INFO django.server "GET /static/sniffer/css/sniffer.css HTTP/1.1" 304 0
+2026-08-14 22:57:45,517 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-14 22:57:45,532 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-14 22:57:45,534 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-14 22:57:47,884 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-14 22:57:47,884 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-14 22:57:47,884 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-14 22:57:50,046 INFO django.server "GET /sessions/29/ HTTP/1.1" 200 27500
+2026-08-14 22:59:06,113 INFO django.server "GET /analytics/ HTTP/1.1" 200 11439
+2026-08-14 22:59:06,249 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-14 22:59:06,250 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-14 22:59:06,251 INFO django.server "GET /static/sniffer/css/sniffer.css HTTP/1.1" 304 0
+2026-08-14 22:59:06,252 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-14 22:59:06,822 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-14 22:59:06,825 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-14 22:59:06,825 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-14 22:59:23,436 INFO django.server "GET /sessions/ HTTP/1.1" 200 7792
+2026-08-14 22:59:24,647 INFO django.server "GET /packets/ HTTP/1.1" 200 22522
+2026-08-14 22:59:30,114 INFO django.server "GET /packets/5940/ HTTP/1.1" 200 7944
+2026-08-14 22:59:38,164 INFO django.server "GET /analytics/ HTTP/1.1" 200 11439
+2026-08-14 23:00:17,974 INFO django.server "GET /analytics/dns/ HTTP/1.1" 200 19498
+2026-08-14 23:00:18,157 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-14 23:00:18,157 INFO django.server "GET /static/sniffer/css/sniffer.css HTTP/1.1" 304 0
+2026-08-14 23:00:18,158 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-14 23:00:18,158 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-14 23:00:20,070 INFO django.server "GET /static/sniffer/vendor/chart.umd.min.js HTTP/1.1" 304 0
+2026-08-14 23:00:20,070 INFO django.server "GET /static/sniffer/js/main.js HTTP/1.1" 304 0
+2026-08-14 23:00:20,071 INFO django.server "GET /static/sniffer/js/charts.js HTTP/1.1" 304 0
+2026-08-14 23:00:41,957 INFO django.server "GET /interfaces/ HTTP/1.1" 200 49591

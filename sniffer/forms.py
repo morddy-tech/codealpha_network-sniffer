@@ -46,7 +46,15 @@ class CaptureForm(forms.Form):
     def _interface_choices():
         discovered = discover_interfaces()
         if discovered:
-            return [(i.name, i.name) for i in discovered]
+            choices = []
+            for i in discovered:
+                label = i.name
+                extras = [i.description or ""] + [ip for ip in i.addresses if ip]
+                extras = [e for e in extras if e]
+                if extras:
+                    label = f"{label} — {', '.join(extras)}"
+                choices.append((i.name, label))
+            return choices
         stored = NetworkInterface.objects.filter(is_active=True).values_list("name", flat=True)
         return [(name, name) for name in stored] or [("", "No interfaces found")]
 

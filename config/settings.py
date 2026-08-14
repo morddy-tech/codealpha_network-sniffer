@@ -224,6 +224,11 @@ MAX_PAYLOAD_PREVIEW_BYTES = min(
 
 CAPTURE_STATS_INTERVAL_SECONDS = 2  # how often worker stats are persisted
 CAPTURE_COMMIT_BATCH_SIZE = 500     # packets written per bulk_create batch
+# A session whose worker has not reported a heartbeat within this many
+# seconds is considered stale (the worker process died without finalizing).
+CAPTURE_STALE_AFTER_SECONDS = 15
+# How long stop() waits for the worker thread to exit before force-closing.
+CAPTURE_STOP_GRACE_SECONDS = 10
 
 # ---------------------------------------------------------------------------
 # Optional threat intelligence (OFF by default, never mandatory)

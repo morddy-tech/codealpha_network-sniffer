@@ -11,9 +11,11 @@
     var stopBtn = document.getElementById("capture-stop");
     var statusPill = document.getElementById("capture-status-pill");
     var errorEl = document.getElementById("capture-error");
+    var hintEl = document.getElementById("capture-hint");
 
     var pollTimer = null;
     var runningSessionId = null;
+    var zeroPacketPolls = 0;
 
     function setPill(status) {
       if (!statusPill) return;
@@ -56,6 +58,20 @@
         stopBtn.disabled = true;
       }
       if (form) form.style.display = running ? "none" : "block";
+
+      if (hintEl) {
+        var endedEmpty =
+          (status.status === "completed" || status.status === "failed") &&
+          !(status.packet_count || 0);
+        var stillEmpty = running && !(status.packet_count || 0);
+        if (stillEmpty) {
+          zeroPacketPolls += 1;
+        } else if (!running) {
+          zeroPacketPolls = 0;
+        }
+        var showHint = endedEmpty || (running && zeroPacketPolls >= 2);
+        hintEl.style.display = showHint ? "block" : "none";
+      }
     }
 
     function poll() {
@@ -121,9 +137,25 @@
           headers: { "X-CSRFToken": csrf() },
           body: data,
         })
-          .then(function (r) { return r.json(); })
-          .then(function () {
+          .then(function (r) {
+            return r.json().then(function (j) { return { ok: r.ok, j: j }; });
+          })
+          .then(function (res) {
+            if (!res.ok || !res.j.ok) {
+              if (errorEl) {
+                errorEl.textContent =
+                  "Error: " + (res.j.error || "Could not stop the capture");
+                errorEl.style.display = "block";
+              }
+              // The session may already be gone; let the status poll decide.
+              window.setTimeout(poll, 500);
+              return;
+            }
+            if (errorEl) errorEl.style.display = "none";
             window.setTimeout(poll, 1500);
+          })
+          .catch(function () {
+            window.setTimeout(poll, 500);
           });
       });
     }
